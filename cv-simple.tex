@@ -1,0 +1,178 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% -*- coding: UTF-8; -*-
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a pandoc template based on the LaTeX template at 
+%% <https://github.com/zachscrivena/simple-resume-cv>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,MMMyyyy,nonstopmode]{simplecv}
+% Class options:
+% a4paper, letterpaper, nonstopmode, draftmode
+% MMMyyyy, ddMMMyyyy, MMMMyyyy, ddMMMMyyyy, yyyyMMdd, yyyyMM, yyyy
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREAMBLE.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontawesome} % Easiest to use fontawesome, from CTAN
+\usepackage{fontawesome5} % newer fontawesome, from https://github.com/JanHendrikDolling/latex-fontawesome5
+\usepackage{academicons} % academic icons from CTAN
+
+% Customize appearance of lists
+\usepackage{enumitem}
+% Add space between bullets and text
+\setlist[itemize]{labelsep = 5pt, font = \normalfont}
+% Eliminate bullet for top-level items
+\setlist[itemize, 1]{label = , labelsep = 0pt}
+% Set 2nd-level bullet to be actual bullet, use smaller font
+\setlist[itemize, 2]{before = \UseDetailFont, label = \bullet}
+
+% Dealing with annoying \tightlist command that pandoc inserts
+\def\tightlist{} % redefines to make it do nothing
+
+% Use APA referencing via Biblatex
+\usepackage[american]{babel}
+\usepackage[babel]{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=none,backend=biber]{biblatex} % I handle sorting
+
+% Loop through bibliography files and add them
+$if(bibs)$
+$for(bibs)$\addbibresource{$bibs$}$endfor$
+$endif$
+
+% Redefining the \fullcitebib command to make two customizations:
+\DeclareCiteCommand{\fullcitebib}
+  {\vspace{-18pt} % 1. Makes the bibliography align with the left-margin section heading
+  \usebibmacro{prenote}%
+   \renewcommand*{\finalnamedelim}{%
+     \finalandcomma\addspace\bibstring{and}\space}
+   \list{}
+     {\setlength{\leftmargin}{\bibhang}%
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\itemsep}{5pt}% % 2. Adding space between entries
+      \setlength{\parsep}{0pt}}%
+   \item}
+  {\usedriver
+     {}
+     {\thefield{entrytype}}\finentry}
+  {\item}
+  {\endlist
+   \usebibmacro{postnote}}
+
+%%%%%%%%%% Bolding my name in bibliography entries %%%%%%%%%%%%%%
+% adapted from 
+% https://tex.stackexchange.com/questions/253388/author-highlighting-with-biblatex-apa
+% This requires a run of biber to see what your name is hashed to 
+% (looks like 7ee2eb84ac3fb6ae0cc177587fcaff6a) and then it is provided
+% in the YAML header in the Rmd or other pandoc input. See the
+% link above for more info.
+$if(namehash)$
+\usepackage{xpatch}% or use https://tex.stackexchange.com/a/40705
+
+\newcommand*{\boldnames}{}
+
+\newcommand*{\doboldhashes}[1]{%
+  \iffieldequalstr{hash}{#1}
+    {\bfseries\listbreak}
+    {}}%
+
+\newbibmacro*{name:bold}{%
+  \forlistloop{\doboldhashes}{\boldnames}%
+}
+
+\xpretobibmacro{name:apa:family-given}{\begingroup\usebibmacro{name:bold}}{}{}
+\xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+\xapptobibmacro{name:apa:family-given}{\endgroup}{}{}
+\xapptobibmacro{name:delim}{\endgroup}{}{}
+
+\renewcommand*{\boldnames}{}
+\forcsvlist{\listadd\boldnames}
+  {{$namehash$}}
+$endif$
+
+% CV name
+\newcommand{\CVAuthor}{$if(name)$$name$$endif$}
+
+% PDF settings and properties.
+% This needs attention, I think.
+\hypersetup{
+pdftitle={\CVAuthor Curriculum Vitae},
+pdfauthor={\CVAuthor},
+pdfcreator={XeLaTeX},
+pdfproducer={},
+pdfkeywords={},
+unicode=true,
+bookmarksopen=true,
+pdfstartview=FitH,
+pdfpagelayout=OneColumn,
+pdfpagemode=UseOutlines,
+% hidelinks,
+% breaklinks,
+$if(colorlinks)$
+colorlinks=true, 
+$if(linkcolor)$
+urlcolor=$linkcolor$, 
+$endif$
+$if(urlcolor)$
+linkcolor=$urlcolor$
+$endif$
+$endif$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACTUAL DOCUMENT.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%
+% TITLE BLOCK %
+%%%%%%%%%%%%%%%
+
+% Specially designed author name, which uses secondary font
+\Title{\CVAuthor}
+% Now the stuff under the name
+\begin{SubTitle}
+$if(title)$
+  $title$ \hspace{.05in} \textbullet \hspace{.05in}
+$endif$
+$if(affiliation)$
+  $affiliation$
+$endif$
+  \par
+$if(contact)$
+  $for(contact)$
+    $if(contact.icon)$\fa$contact.icon$ \, $endif$ $if(contact.acad)$\ai$contact.acad$ \, $endif$
+    $if(contact.link)$ 
+      \href{$contact.link$}{
+        $if(contact.mono)$
+          \hspace{-2pt}\texttt{$contact.text$}
+        $else$
+          $contact.text$
+        $endif$}
+    $else$
+      $contact.text$
+    $endif$
+  $sep$ \enspace $endfor$
+$endif$
+\end{SubTitle}
+
+\begin{Body}
+
+\vspace{-.4in} % Kill some deadspace
+
+% I don't like LaTeX's efforts to spread everything to fill the whole textwidth
+$if(raggedright)$ 
+\raggedright
+$endif$
+
+% Add the body
+$body$
+
+
+\end{Body}
+
+\end{document}
