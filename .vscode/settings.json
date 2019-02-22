@@ -1,0 +1,7 @@
+{
+  "latex-workshop.chktex.run": "onType",
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.intellisense.unimathsymbols.enabled": true,
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.hover.preview.enabled": false
+}

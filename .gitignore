@@ -209,4 +209,14 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+
+# Jacob adds
 cvinprogress\.pdf
+.Rproj.user
+CV.Rproj
+.Rhistory
+.RData
+*.xdv
+svm_cv_*
+Old CV/
+ReferenceCVs
