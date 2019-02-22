@@ -1,0 +1,455 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% -*- coding: UTF-8; -*-
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a pandoc template based on the LaTeX template at 
+%% <https://github.com/zachscrivena/simple-resume-cv>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,MMMyyyy,nonstopmode]{simplecv}
+% Class options:
+% a4paper, letterpaper, nonstopmode, draftmode
+% MMMyyyy, ddMMMyyyy, MMMMyyyy, ddMMMMyyyy, yyyyMMdd, yyyyMM, yyyy
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREAMBLE.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontawesome} % Easiest to use fontawesome, from CTAN
+\usepackage{fontawesome5} % newer fontawesome, from https://github.com/JanHendrikDolling/latex-fontawesome5
+\usepackage{academicons} % academic icons from CTAN
+
+% Customize appearance of lists
+\usepackage{enumitem}
+% Add space between bullets and text
+\setlist[itemize]{labelsep = 5pt, font = \normalfont}
+% Eliminate bullet for top-level items
+\setlist[itemize, 1]{label = , labelsep = 0pt}
+% Set 2nd-level bullet to be actual bullet, use smaller font
+\setlist[itemize, 2]{before = \UseDetailFont, label = \bullet}
+
+% Dealing with annoying \tightlist command that pandoc inserts
+\def\tightlist{} % redefines to make it do nothing
+
+% Use APA referencing via Biblatex
+\usepackage[american]{babel}
+\usepackage[babel]{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=none,backend=biber]{biblatex} % I handle sorting
+
+% Loop through bibliography files and add them
+\addbibresource{pubbed.bib}\addbibresource{conferences.bib}\addbibresource{inprogress.bib}
+
+% Redefining the \fullcitebib command to make two customizations:
+\DeclareCiteCommand{\fullcitebib}
+  {\vspace{-18pt} % 1. Makes the bibliography align with the left-margin section heading
+  \usebibmacro{prenote}%
+   \renewcommand*{\finalnamedelim}{%
+     \finalandcomma\addspace\bibstring{and}\space}
+   \list{}
+     {\setlength{\leftmargin}{\bibhang}%
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\itemsep}{5pt}% % 2. Adding space between entries
+      \setlength{\parsep}{0pt}}%
+   \item}
+  {\usedriver
+     {}
+     {\thefield{entrytype}}\finentry}
+  {\item}
+  {\endlist
+   \usebibmacro{postnote}}
+
+%%%%%%%%%% Bolding my name in bibliography entries %%%%%%%%%%%%%%
+% adapted from 
+% https://tex.stackexchange.com/questions/253388/author-highlighting-with-biblatex-apa
+% This requires a run of biber to see what your name is hashed to 
+% (looks like 7ee2eb84ac3fb6ae0cc177587fcaff6a) and then it is provided
+% in the YAML header in the Rmd or other pandoc input. See the
+% link above for more info.
+\usepackage{xpatch}% or use https://tex.stackexchange.com/a/40705
+
+\newcommand*{\boldnames}{}
+
+\newcommand*{\doboldhashes}[1]{%
+  \iffieldequalstr{hash}{#1}
+    {\bfseries\listbreak}
+    {}}%
+
+\newbibmacro*{name:bold}{%
+  \forlistloop{\doboldhashes}{\boldnames}%
+}
+
+\xpretobibmacro{name:apa:family-given}{\begingroup\usebibmacro{name:bold}}{}{}
+\xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+\xapptobibmacro{name:apa:family-given}{\endgroup}{}{}
+\xapptobibmacro{name:delim}{\endgroup}{}{}
+
+\renewcommand*{\boldnames}{}
+\forcsvlist{\listadd\boldnames}
+  {{7ee2eb84ac3fb6ae0cc177587fcaff6a}}
+
+% CV name
+\newcommand{\CVAuthor}{Jacob A. Long}
+
+% PDF settings and properties.
+% This needs attention, I think.
+\hypersetup{
+pdftitle={\CVAuthor Curriculum Vitae},
+pdfauthor={\CVAuthor},
+pdfcreator={XeLaTeX},
+pdfproducer={},
+pdfkeywords={},
+unicode=true,
+bookmarksopen=true,
+pdfstartview=FitH,
+pdfpagelayout=OneColumn,
+pdfpagemode=UseOutlines,
+% hidelinks,
+% breaklinks,
+colorlinks=true, 
+urlcolor=blue, 
+linkcolor=magenta
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACTUAL DOCUMENT.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%
+% TITLE BLOCK %
+%%%%%%%%%%%%%%%
+
+% Specially designed author name, which uses secondary font
+\Title{\CVAuthor}
+% Now the stuff under the name
+\begin{SubTitle}
+  Ph.D Candidate \hspace{.05in} \textbullet \hspace{.05in}
+  School of Communication \hspace{.05in} \textbullet \hspace{.05in} Ohio
+  State University
+  \par
+      \faEnvelopeO \,  
+          \href{mailto:long.1377@osu.edu}{
+                  long.1377@osu.edu
+        }
+       \enspace     \faGlobe \,  
+          \href{https://jacob-long.com}{
+                  \hspace{-2pt}\texttt{jacob-long.com}
+        }
+       \enspace     \faGithub \,  
+          \href{https://github.com/jacob-long}{
+                  \hspace{-2pt}\texttt{jacob-long}
+        }
+       \enspace      \aiOrcid \, 
+          \href{https://orcid.org/0000-0002-1582-6214}{
+                  \hspace{-2pt}\texttt{0000-0002-1582-6214}
+        }
+      \end{SubTitle}
+
+\begin{Body}
+
+\vspace{-.4in} % Kill some deadspace
+
+% I don't like LaTeX's efforts to spread everything to fill the whole textwidth
+\raggedright
+
+% Add the body
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\hypertarget{the-ohio-state-university-columbus-ohio-usa}{%
+\subsection{\texorpdfstring{The Ohio State University,
+\normalfont Columbus, Ohio
+USA}{The Ohio State University, Columbus, Ohio USA}}\label{the-ohio-state-university-columbus-ohio-usa}}
+
+\begin{itemize}
+\item
+  Ph.D Candidate, Communication (expected graduation: Spring 2020)
+
+  \begin{itemize}
+  \item
+    Committee:
+
+    \smallskip
+
+    William P. \enquote{Chip} Eveland, Jr.~(advisor) \hspace{.05in}
+    \textbullet \hspace{.05in} Michael D. Slater \hspace{.05in}
+    \textbullet \hspace{.05in} Gerald M. Kosicki \hspace{.05in}
+    \textbullet \hspace{.05in} Robert M. Bond
+
+    \smallskip
+  \item
+    Graduate Interdisciplinary Specialization in Survey Research
+  \end{itemize}
+\item
+  M.A., Communication, 2019
+\end{itemize}
+
+\hypertarget{rhodes-college-memphis-tennessee-usa}{%
+\subsection{\texorpdfstring{Rhodes College, \normalfont Memphis,
+Tennessee
+USA}{Rhodes College, Memphis, Tennessee USA}}\label{rhodes-college-memphis-tennessee-usa}}
+
+\begin{itemize}
+\item
+  B.A. with Honors, Political Science, 2014
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Minors in Film Studies and English
+  \item
+    Honors Thesis: \enquote{Understanding \emph{The Daily Show with Jon
+    Stewart}: Effects in a New Media Environment}
+  \item
+    Advisors: Amy E. Jasperson and Rashna Wadia Richards
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{publications}{%
+\section{Publications}\label{publications}}
+
+\fullcitebib{long2019d, long2019c}
+
+\hypertarget{conference-presentations}{%
+\section{Conference Presentations}\label{conference-presentations}}
+
+\fullcitebib{eveland2019, long2018d, eveland2017, long2017, jeong2016, long2015}
+
+\newpage
+
+\hypertarget{software}{%
+\section{Software}\label{software}}
+
+\hypertarget{r-packages}{%
+\subsection{R Packages}\label{r-packages}}
+
+\texttt{jtools}: Analysis and presentation of social scientific data.
+
+\small
+\vspace{-.05in}
+
+\begin{itemize}
+\item
+  \faicon{r-project}
+  \href{https://CRAN.R-project.org/package=jtools}{CRAN} \hspace{.03in}
+  \textbullet \hspace{.05in} \faGithub \hspace{.02in}
+  \href{https://github.com/jacob-long/jtools}{jacob-long/jtools}
+  \hspace{.03in} \textbullet \hspace{.05in} \faGlobe \hspace{.02in}
+  \href{https://jtools.jacob-long.com}{jtools.jacob-long.com}
+\item
+  Author: \textbf{Jacob A. Long}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    14 scholarly citations per
+    \href{https://scholar.google.com/scholar?oi=bibs\&hl=en\&cites=9332474636617245381,8245268343852705630}{Google
+    Scholar} as of 02/22/2019
+  \item
+    44,412 downloads from RStudio's
+    \href{https://r-pkg.org/services\#cranlogs}{CRAN mirror} as of
+    02/22/2019
+  \end{itemize}
+\end{itemize}
+
+\normalsize
+
+\texttt{interactions}: Comprehensive, user-friendly toolkit for probing
+interactions.
+
+\small 
+\vspace{-.05in}
+
+\begin{itemize}
+\tightlist
+\item
+  \faicon{r-project}
+  \href{https://CRAN.R-project.org/package=interactions}{CRAN}
+  \hspace{.03in} \textbullet \hspace{.05in} \faGithub \hspace{.02in}
+  \href{https://github.com/jacob-long/interactions}{jacob-long/interactions}
+  \hspace{.03in} \textbullet \hspace{.05in} \faGlobe \hspace{.02in}
+  \href{https://interactions.jacob-long.com}{interactions.jacob-long.com}
+\item
+  Author: \textbf{Jacob A. Long}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    221 downloads from RStudio's
+    \href{https://r-pkg.org/services\#cranlogs}{CRAN mirror} as of
+    02/22/2019
+  \end{itemize}
+\end{itemize}
+
+\normalsize
+
+\texttt{panelr}: Regression models and utilities for repeated measures
+and panel data.
+
+\small 
+\vspace{-.05in}
+
+\begin{itemize}
+\tightlist
+\item
+  \faGithub \hspace{.02in}
+  \href{https://github.com/jacob-long/panelr}{github.com/jacob-long/panelr}
+  \hspace{.03in} \textbullet \hspace{.05in} \faGlobe \hspace{.02in}
+  \href{https://panelr.jacob-long.com}{panelr.jacob-long.com}
+\item
+  Author: \textbf{Jacob A. Long}
+\end{itemize}
+
+\normalsize
+
+\texttt{dpm}: Dynamic panel models fit with maximum likelihood. \small 
+\vspace{-.05in}
+
+\begin{itemize}
+\item
+  \faGithub \hspace{.02in}
+  \href{https://github.com/jacob-long/dpm}{github.com/jacob-long/dpm}
+  \hspace{.03in} \textbullet \hspace{.05in} \faGlobe \hspace{.02in}
+  \href{https://dpm.jacob-long.com}{dpm.jacob-long.com}
+\item
+  Authors: \textbf{Jacob A. Long}, Richard A. Williams, Paul D. Allison
+\end{itemize}
+
+\normalsize
+
+\hypertarget{other}{%
+\subsection{Other}\label{other}}
+
+Song and Lyric Data Scraper {[}Ruby app{]}. Accompanies Long \& Eveland
+(2019).
+
+\vspace{-.05in}
+
+\begin{itemize}
+\tightlist
+\item
+  doi:\href{https://doi.org/10.5281/zenodo.1203368}{10.5281/zenodo.1203368}
+\end{itemize}
+
+\small 
+\vspace{-.07in}
+
+\begin{itemize}
+\tightlist
+\item
+  \faGithub \hspace{.02in}
+  \href{https://github.com/jacob-long/song-and-lyric-data-scraper}{github.com/jacob-long/song-and-lyric-data-scraper}
+\end{itemize}
+
+\normalsize
+
+\hypertarget{research-in-progress}{%
+\section{Research in Progress}\label{research-in-progress}}
+
+\fullcitebib{eveland, garrett, longa, long}
+
+\hypertarget{teaching}{%
+\section{Teaching}\label{teaching}}
+
+\hypertarget{ohio-state-university}{%
+\subsection{Ohio State University}\label{ohio-state-university}}
+
+\begin{itemize}
+\tightlist
+\item
+  COMM 4820: Public Opinion and Communication
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Summer 2016
+  \end{itemize}
+\item
+  COMM 3597: Media and Terrorism
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Autumn 2018
+  \end{itemize}
+\item
+  COMM 3554: Social Implications of Communication Technology
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Summer 2018 (taught online)
+  \end{itemize}
+\item
+  COMM 2367: Persuasive Communication
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Autumn 2015, Spring 2016 (2 sections), Autumn 2016 (2 sections),
+    Spring 2017 (taught online)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{honors-and-awards}{%
+\section{Honors and Awards}\label{honors-and-awards}}
+
+University Fellowship (Ohio State University), 2014-15.
+
+Mike Cody Award for Excellence in Political Science (Rhodes College),
+2014.
+
+Sigma Tau Delta, International English Honor Society, 2014.
+
+Pi Sigma Alpha, National Political Science Honor Society, 2013.
+
+Cambridge Scholarship (Rhodes College), 2010-14.
+
+Robert C. Byrd Honors Scholarship, 2010-11.
+
+\hypertarget{professional-experience}{%
+\section{Professional Experience}\label{professional-experience}}
+
+\hypertarget{freelance-wmc-tv-5-memphis-tn}{%
+\subsection{\texorpdfstring{Freelance, WMC-TV 5, \normalfont Memphis,
+TN}{Freelance, WMC-TV 5, Memphis, TN}}\label{freelance-wmc-tv-5-memphis-tn}}
+
+Followed experience as news intern. Participated in editorial meetings,
+assisted reporters, anchors, and producers, and worked assignment desk
+on weekends. Wrote content for newscasts and web.
+
+\hypertarget{service}{%
+\section{Service}\label{service}}
+
+\hypertarget{conference-reviewing}{%
+\subsection{Conference Reviewing}\label{conference-reviewing}}
+
+\emph{International Communication Association:}
+
+\begin{itemize}
+\tightlist
+\item
+  Mass Communication Division (2018)
+\item
+  Political Communication Division (2018, 2019)
+\item
+  Computational Methods Interest Group (2019)
+\end{itemize}
+
+\emph{National Communication Association:}
+
+\begin{itemize}
+\tightlist
+\item
+  Mass Communication Division (2017)
+\item
+  Political Communication Division (2017)
+\end{itemize}
+
+
+\end{Body}
+
+\end{document}
