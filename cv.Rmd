@@ -1,0 +1,255 @@
+---
+output: 
+  latex_document:
+    latex_engine: xelatex
+    template: "./cv-simple.tex"
+    md_extensions: "-autolink_bare_uris"
+
+name: "Jacob A. Long"
+
+title: "Ph.D Candidate"
+affiliation: "School of Communication \\hspace{.05in} \\textbullet \\hspace{.05in} Ohio State University"
+contact:
+  - text: "long.1377@osu.edu"
+    link: "mailto:long.1377@osu.edu"
+    icon: "EnvelopeO"
+    mono: false
+  - text: "jacob-long.com"
+    link: "https://jacob-long.com"
+    icon: "Globe"
+    mono: true
+  - text: "jacob-long"
+    link: "https://github.com/jacob-long"
+    icon: "Github"
+    mono: true
+  - text: "0000-0002-1582-6214"
+    link: "https://orcid.org/0000-0002-1582-6214"
+    acad: "Orcid"
+    mono: true
+# twitter: jacobandrewlong
+
+bibs:
+  - "pubbed.bib"
+  - "conferences.bib"
+  - "inprogress.bib"
+
+namehash: "7ee2eb84ac3fb6ae0cc177587fcaff6a"
+
+raggedright: true
+
+colorlinks: true
+linkcolor: "blue"
+urlcolor: "magenta"
+---
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
+```
+
+# Education
+
+## The Ohio State University, \normalfont Columbus, Ohio USA
+
+* Ph.D Candidate, Communication (expected graduation: Spring 2020)
+
+    * Committee: 
+
+        \smallskip
+
+        William P. "Chip" Eveland, Jr. (advisor) 
+        \hspace{.05in} \textbullet \hspace{.05in} Michael D. Slater
+        \hspace{.05in} \textbullet \hspace{.05in} Gerald M. Kosicki
+        \hspace{.05in} \textbullet \hspace{.05in} Robert M. Bond
+
+        \smallskip
+
+    * Graduate Interdisciplinary Specialization in Survey Research
+
+* M.A., Communication, 2019
+
+## Rhodes College, \normalfont Memphis, Tennessee USA
+
+* B.A. with Honors, Political Science, 2014
+
+    * Minors in Film Studies and English
+    * Honors Thesis: "Understanding *The Daily Show with Jon Stewart*:
+        Effects in a New Media Environment"
+    * Advisors: Amy E. Jasperson and Rashna Wadia Richards
+
+# Publications
+
+```{r results = 'asis'}
+library(RefManageR)
+print_refs <- function(file) {
+  refs <- ReadBib(file, check = FALSE)
+  cat(paste0("\\fullcitebib{", paste(names(sort(refs, sorting = "ydnt")), collapse = ", "), "}"))
+}
+print_refs("pubbed.bib")
+```
+
+# Conference Presentations 
+
+```{r results = 'asis'}
+print_refs("conferences.bib")
+```
+
+\newpage
+
+# Software
+
+## R Packages
+
+`jtools`: Analysis and presentation of social scientific data. 
+
+```{r echo = FALSE}
+library(rvest)
+library(magrittr)
+prof_url <- "https://scholar.google.com/citations?hl=en&user=fi-oVkIAAAAJ&view_op=list_works&citft=1&citft=2&email_for_op=jlongrc%40gmail.com&gmla=AJsN-F6U0W7Pb2H2sGdtSobMNTJR-HLu-OQ8kKCZeXg1EycF_GfWYLB54v7H5SlMcGBqKUjGlMnSkJlG3j0fM8wMhBJz2i4iM5kAVUf2PeoGyCMgeTkkLwA&gmla=AJsN-F7fklbe6gqvPjDweKtwwyvicMTZxtpVLPRUTNteYwXL1tMV7xHD81vwhCXcs_suOKGI83V7y8c_R5a_GxNBIkkarl0D6W7yKCwU2m9JqJ0Mzupk46M&sciund=729968478779288"
+read_html(prof_url) %>%
+  html_nodes("tr.gsc_a_tr") %>%
+  .[stringr::str_detect(html_text(.), "jtools")] %>%
+  html_children() %>%
+  html_text() %>%
+  .[2] -> jtools_gsch
+
+library(jsonlite)
+url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/jtools")
+jtools_cranlogs <- fromJSON(url)[["downloads"]]
+```
+
+\small
+\vspace{-.05in}
+
+* \faicon{r-project} [CRAN](https://CRAN.R-project.org/package=jtools) 
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGithub \hspace{.02in} [jacob-long/jtools](https://github.com/jacob-long/jtools)
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGlobe \hspace{.02in} [jtools.jacob-long.com](https://jtools.jacob-long.com)
+
+* Author: **Jacob A. Long**
+    * `r jtools_gsch` scholarly citations per
+    [Google Scholar](https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9332474636617245381,8245268343852705630) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    * `r format(jtools_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+
+```{r echo = FALSE}
+library(jsonlite)
+url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
+interactions_cranlogs <- fromJSON(url)[["downloads"]]
+```
+
+\normalsize 
+
+`interactions`: Comprehensive, user-friendly toolkit for probing interactions.
+
+\small 
+\vspace{-.05in}
+
+* \faicon{r-project} [CRAN](https://CRAN.R-project.org/package=interactions) 
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGithub \hspace{.02in} [jacob-long/interactions](https://github.com/jacob-long/interactions)
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGlobe \hspace{.02in} [interactions.jacob-long.com](https://interactions.jacob-long.com)
+* Author: **Jacob A. Long**
+    * `r format(interactions_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+
+\normalsize
+
+`panelr`: Regression models and utilities for repeated measures and panel data.
+
+\small 
+\vspace{-.05in}
+
+* \faGithub \hspace{.02in} [github.com/jacob-long/panelr](https://github.com/jacob-long/panelr)
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGlobe \hspace{.02in} [panelr.jacob-long.com](https://panelr.jacob-long.com)
+* Author: **Jacob A. Long**
+
+\normalsize
+
+`dpm`: Dynamic panel models fit with maximum likelihood. 
+\small 
+\vspace{-.05in}
+
+* \faGithub \hspace{.02in} [github.com/jacob-long/dpm](https://github.com/jacob-long/dpm)
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGlobe \hspace{.02in} [dpm.jacob-long.com](https://dpm.jacob-long.com)
+
+* Authors: **Jacob A. Long**, Richard A. Williams, Paul D. Allison
+
+\normalsize
+
+## Other
+
+Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019). 
+
+\vspace{-.05in}
+
+* doi:[10.5281/zenodo.1203368](https://doi.org/10.5281/zenodo.1203368)
+
+\small 
+\vspace{-.07in}
+
+* \faGithub \hspace{.02in} [github.com/jacob-long/song-and-lyric-data-scraper](https://github.com/jacob-long/song-and-lyric-data-scraper) 
+
+\normalsize
+
+
+# Research in Progress
+
+```{r results = 'asis'}
+print_refs("inprogress.bib")
+```
+
+# Teaching
+
+## Ohio State University
+
+* COMM 4820: Public Opinion and Communication
+    * Summer 2016
+
+* COMM 3597: Media and Terrorism
+    * Autumn 2018
+
+* COMM 3554: Social Implications of Communication Technology
+    * Summer 2018 (taught online)
+
+* COMM 2367: Persuasive Communication
+    * Autumn 2015, Spring 2016 (2 sections), Autumn 2016 (2 sections), Spring 2017 (taught online)
+
+# Honors and Awards
+
+University Fellowship (Ohio State University), 2014-15.
+
+Mike Cody Award for Excellence in Political Science (Rhodes College), 2014.
+
+Sigma Tau Delta, International English Honor Society, 2014.
+
+Pi Sigma Alpha, National Political Science Honor Society, 2013.
+
+Cambridge Scholarship (Rhodes College), 2010-14.
+
+Robert C. Byrd Honors Scholarship, 2010-11.
+
+# Professional Experience
+
+## Freelance, WMC-TV 5, \normalfont Memphis, TN
+Followed experience as news intern. Participated in editorial meetings, assisted reporters, anchors,
+and producers, and worked assignment desk on weekends. Wrote content for newscasts and web.
+
+# Service
+
+## Conference Reviewing
+
+*International Communication Association:*
+
+* Mass Communication Division (2018)
+* Political Communication Division (2018, 2019)
+* Computational Methods Interest Group (2019)
+
+*National Communication Association:*
+
+* Mass Communication Division (2017)
+* Political Communication Division (2017)
+
