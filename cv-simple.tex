@@ -84,6 +84,37 @@ $if(namehash)$
   {{$namehash$}}
 $endif$
 
+% Add annotations from .bib after each entry
+% https://tex.stackexchange.com/a/91381/182063
+\renewbibmacro*{finentry}{%
+  \iffieldundef{annotation}
+    {\finentry}
+    {\setunit{\finentrypunct\par\vspace{.05in}}
+     \printfield{annotation}%
+     \finentry}}
+
+% Suppress "(n.d.)" printing for works in progress
+% https://tex.stackexchange.com/q/336041/182063
+\DeclareLabeldate[misc]{%
+  \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+}
+
+% Don't print the month/day for conference papers
+\DeclareLabeldate[unpublished]{%
+  % \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+}
+
+% Stops biblatex-apa from using letters to disambiguate same author, same year pubs
+\DeclareFieldFormat{extradate}{}
+
 % CV name
 \newcommand{\CVAuthor}{$if(name)$$name$$endif$}
 
