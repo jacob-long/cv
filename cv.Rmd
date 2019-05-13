@@ -32,6 +32,7 @@ bibs:
   - "pubbed.bib"
   - "conferences.bib"
   - "inprogress.bib"
+  - "review.bib"
 
 namehash: "7ee2eb84ac3fb6ae0cc177587fcaff6a"
 
@@ -86,6 +87,13 @@ print_refs <- function(file) {
 }
 print_refs("pubbed.bib")
 ```
+
+# Under Review
+
+```{r results = 'asis'}
+print_refs("review.bib",  c("garrett"))
+```
+
 
 # Conference Presentations 
 
