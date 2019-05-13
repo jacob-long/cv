@@ -140,7 +140,7 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 \small
 \vspace{-.05in}
 
-* \faicon{r-project} [CRAN](https://CRAN.R-project.org/package=jtools) 
+* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=jtools) 
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGithub \hspace{.02in} [jacob-long/jtools](https://github.com/jacob-long/jtools)
 \hspace{.03in} \textbullet \hspace{.05in} 
@@ -165,7 +165,7 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 \small 
 \vspace{-.05in}
 
-* \faicon{r-project} [CRAN](https://CRAN.R-project.org/package=interactions) 
+* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=interactions) 
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGithub \hspace{.02in} [jacob-long/interactions](https://github.com/jacob-long/interactions)
 \hspace{.03in} \textbullet \hspace{.05in} 
