@@ -263,24 +263,27 @@ Scale = 0.95]
 \newcommand{\BigGap}{\par\vspace{2.25mm}\par}
 
 % Macro: Section (new section for Education, Research Experience, etc.).
-\renewcommand{\section}[3]
+\renewcommand{\section}[1]
 {\smallskip
-\par\pdfbookmark[2]{#2}{#3}%
+\par\pdfbookmark[2]{#1}{#1}%
 \item[\smash{\parbox[t]{1.2in}{\UseSectionFont\raggedright{#1}}}]% eliminated \MakeUppercase{#1} after \raggedright
-\par}
+\par
+}
 
 % Macro: SubSection.
-\renewcommand{\subsection}[3]
+\renewcommand{\subsection}[1]
 {\smallskip
-\par\pdfbookmark[3]{#2}{#3}%
+\par\pdfbookmark[3]{#1}{#1}%
 {\UseSubSectionFont\raggedright{#1}}% eliminated \MakeUppercase{#1} after \raggedright
-\par}
+\par
+}
 
 % Macro: SubSubSection.
-\renewcommand{\subsubsection}[3]
-{\par\pdfbookmark[3]{#2}{#3}%
+\renewcommand{\subsubsection}[1]
+{\par\pdfbookmark[3]{#1}{#1}%
 {\UseSubSubSectionFont\raggedright{#1}}%
-\par}
+% \par
+}
 
 % Macro: Detail (text in smaller font under an item).
 \newenvironment{Detail}
