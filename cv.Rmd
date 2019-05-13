@@ -237,17 +237,19 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 
 # Honors and Awards
 
-University Fellowship (Ohio State University), 2014-15.
+Chaffee-McLeod Top Student Paper Award, AEJMC CT\&M Division \hfill 2019 \thinspace \thinspace \thinspace
 
-Mike Cody Award for Excellence in Political Science (Rhodes College), 2014.
+University Fellowship (Ohio State University) \hfill 2014-15 
 
-Sigma Tau Delta, International English Honor Society, 2014.
+Mike Cody Award for Excellence in Political Science (Rhodes College) \hfill 2014 \thinspace \thinspace \thinspace
 
-Pi Sigma Alpha, National Political Science Honor Society, 2013.
+Sigma Tau Delta, International English Honor Society \hfill 2014 \thinspace \thinspace \thinspace
 
-Cambridge Scholarship (Rhodes College), 2010-14.
+Pi Sigma Alpha, National Political Science Honor Society \hfill 2013 \thinspace \thinspace \thinspace
 
-Robert C. Byrd Honors Scholarship, 2010-11.
+Cambridge Scholarship (Rhodes College) \hfill 2010-14 
+
+Robert C. Byrd Honors Scholarship \hfill 2010-11
 
 # Professional Experience
 
