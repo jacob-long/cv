@@ -173,12 +173,13 @@ Scale = 0.95]
 
 % Headers and footers: Blank header, page number in footer.
 \AtEndDocument{\null\label{LastPage}}
-\newcommand{\PageKOfN}{{\UseHeaderFooterFont{Page}~\thepage~of~\pageref{LastPage}}}
+\newcommand{\PageKOfN}{{\UseHeaderFooterFont{\thepage}}}
 \newcommand{\DraftStamp}{{\UseHeaderFooterFont\color{red}DRAFT~\Timestamp}}
+\newcommand{\Modified}{\UseHeaderFooterFont{Updated \today}}
 
 \ifnum\TypesetInDraftMode=0
 \newcommand{\HeaderText}{}
-\newcommand{\FooterText}{\hfill\PageKOfN\hfill}
+\newcommand{\FooterText}{\hfill\PageKOfN\hfill\Modified\null}
 \else
 \newcommand{\HeaderText}{}
 \newcommand{\FooterText}{\null\hphantom{\DraftStamp}\hfill%
