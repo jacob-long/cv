@@ -97,7 +97,7 @@ includefoot]{geometry}
 % XeLaTeX packages.
 \RequirePackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-% \RequirePackage{xunicode}
+\RequirePackage{xunicode}
 \RequirePackage{xltxtra}
 
 % Font: Use "Cabin" as the main typeface (\textnormal{}, \normalfont).
@@ -119,6 +119,10 @@ ItalicFont=Raleway-Italic,
 BoldFont=Raleway-Bold,
 BoldItalicFont=Raleway-BoldItalic]
 {Raleway-Regular.ttf}
+}
+
+\newcommand{\fallbackUnicode}{
+\fontspec{Arial}
 }
 
 % Sans-serif font: Changed to main font, Cabin.
@@ -162,10 +166,10 @@ Scale = 0.95]
 
 % Symbols (Unicode).
 % See: https://unicode-table.com/en/
-% \newcommand{\BulletSymbol}{{\normalfont\fontsize{6.5}{7.8}\selectfont\raisebox{0.17em}{\char"25A0}}}
-% \newcommand{\SubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
-% \newcommand{\SubSubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CB}}}
-% \newcommand{\TildeSymbol}{{\normalfont\char"007E}}
+\newcommand{\BulletSymbol}{{\fallbackUnicode\fontsize{8}{8}\selectfont\raisebox{0.17em}{\char"25A0}}}
+\newcommand{\SubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
+\newcommand{\SubSubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CB}}}
+\newcommand{\TildeSymbol}{{\normalfont\char"007E}}
 
 % Headers and footers: Blank header, page number in footer.
 \AtEndDocument{\null\label{LastPage}}
