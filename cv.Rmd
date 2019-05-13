@@ -49,9 +49,9 @@ knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
 
 # Education
 
-## The Ohio State University, \normalfont Columbus, Ohio USA
+## The Ohio State University \normalfont Columbus, Ohio, USA
 
-* Ph.D Candidate, Communication (expected graduation: Spring 2020)
+* Ph.D Candidate, Communication \hfill expected 2020
 
     * Committee: 
 
@@ -59,18 +59,18 @@ knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
 
         William P. "Chip" Eveland, Jr. (advisor) 
         \hspace{.05in} \textbullet \hspace{.05in} Michael D. Slater
-        \hspace{.05in} \textbullet \hspace{.05in} Gerald M. Kosicki
+        \newline Gerald M. Kosicki
         \hspace{.05in} \textbullet \hspace{.05in} Robert M. Bond
 
         \smallskip
 
     * Graduate Interdisciplinary Specialization in Survey Research
 
-* M.A., Communication, 2019
+* M.A., Communication \hfill 2019
 
-## Rhodes College, \normalfont Memphis, Tennessee USA
+## Rhodes College \normalfont Memphis, Tennessee, USA
 
-* B.A. with Honors, Political Science, 2014
+* B.A. with Honors, Political Science \hfill 2014
 
     * Minors in Film Studies and English
     * Honors Thesis: "Understanding *The Daily Show with Jon Stewart*:
@@ -81,9 +81,14 @@ knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
 
 ```{r results = 'asis'}
 library(RefManageR)
-print_refs <- function(file) {
+library(jtools)
+print_refs <- function(file, names = NULL) {
   refs <- ReadBib(file, check = FALSE)
-  cat(paste0("\\fullcitebib{", paste(names(sort(refs, sorting = "ydnt")), collapse = ", "), "}"))
+  cat(paste0("\\fullcitebib{", paste(
+      c(names %just% names(refs), names(sort(refs, sorting = "ydnt")) %not% names), 
+      collapse = ", "), "}"
+    )
+  )
 }
 print_refs("pubbed.bib")
 ```
@@ -177,6 +182,8 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 * Author: **Jacob A. Long**
     * `r format(interactions_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    * Highlighted as a [top new package](https://rviews.rstudio.com/2019/03/26/february-2019-top-40-new-cran-packages/)
+     in February 2019
 
 \normalsize
 
@@ -229,8 +236,10 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 * COMM 3597: Media and Terrorism
     * Autumn 2018
 
+\newpage 
+
 * COMM 3554: Social Implications of Communication Technology
-    * Summer 2018 (taught online)
+    * Summer 2018, 2019 (taught online)
 
 * COMM 2367: Persuasive Communication
     * Autumn 2015, Spring 2016 (2 sections), Autumn 2016 (2 sections), Spring 2017 (taught online)
@@ -267,8 +276,17 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 * Political Communication Division (2018, 2019)
 * Computational Methods Interest Group (2019)
 
+*Association for Education in Journalism and Mass Communication*:
+
+* Political Communication Interest Group (2019)
+
 *National Communication Association:*
 
 * Mass Communication Division (2017)
 * Political Communication Division (2017)
 
+<!--# Additional Training
+
+Social Network Analysis workshops at the *10th Annual Political Networks Conference*, Columbus, OH, May 2017
+
+Structural Equation Modeling Seminar by *Statistical Horizons*, Columbus, OH, August 2016 -->
