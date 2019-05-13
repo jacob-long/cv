@@ -427,6 +427,14 @@ Scale = 0.95]
 
 % Macro: Hide.
 % \newcommand{\Hide}[1]{}
+% Customize appearance of lists
+\usepackage{enumitem}
+% Add space between bullets and text
+\setlist[itemize]{labelsep = 5pt, font = \normalfont}
+% Eliminate bullet for top-level items
+\setlist[itemize, 1]{label = {}, labelsep = 0pt}
+% Set 2nd-level bullet to be actual bullet, use smaller font
+\setlist[itemize, 2]{before = \UseDetailFont, label= \BulletSymbol}
 
 % End of class file.
 \endinput

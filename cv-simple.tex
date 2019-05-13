@@ -20,15 +20,6 @@
 \usepackage{fontawesome5} % newer fontawesome, from https://github.com/JanHendrikDolling/latex-fontawesome5
 \usepackage{academicons} % academic icons from CTAN
 
-% Customize appearance of lists
-\usepackage{enumitem}
-% Add space between bullets and text
-\setlist[itemize]{labelsep = 5pt, font = \normalfont}
-% Eliminate bullet for top-level items
-\setlist[itemize, 1]{label = , labelsep = 0pt}
-% Set 2nd-level bullet to be actual bullet, use smaller font
-\setlist[itemize, 2]{before = \UseDetailFont, label = \bullet}
-
 % Dealing with annoying \tightlist command that pandoc inserts
 \def\tightlist{} % redefines to make it do nothing
 
