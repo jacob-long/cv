@@ -98,7 +98,19 @@ print_refs("review.bib",  c("garrett"))
 # Conference Presentations 
 
 ```{r results = 'asis'}
-print_refs("conferences.bib")
+BibOptions(check.entries = FALSE)
+confs <- ReadBib("conferences.bib")
+for (entry in names(confs)) {
+  if (is.null(confs[[entry]]$note)) {
+    confs[[entry]]$note <- paste(
+    ifelse(is.null(confs[[entry]]$type), no = confs[[entry]]$type, yes = "Paper"),
+    "presented at the", confs[[entry]]$eventtitle
+    )
+    confs[[entry]]$type <- NULL
+  }
+}
+WriteBib(confs, "conferences.bib")
+print_refs("conferences.bib", c("long2019f", "long2019e"))
 ```
 
 \newpage
