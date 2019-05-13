@@ -113,7 +113,11 @@ WriteBib(confs, "conferences.bib")
 print_refs("conferences.bib", c("long2019f", "long2019e"))
 ```
 
-\newpage
+# Research in Progress
+
+```{r results = 'asis'}
+print_refs("inprogress.bib")
+```
 
 # Software
 
@@ -214,13 +218,6 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 * \faGithub \hspace{.02in} [github.com/jacob-long/song-and-lyric-data-scraper](https://github.com/jacob-long/song-and-lyric-data-scraper) 
 
 \normalsize
-
-
-# Research in Progress
-
-```{r results = 'asis'}
-print_refs("inprogress.bib")
-```
 
 # Teaching
 
