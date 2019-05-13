@@ -1,9 +1,9 @@
 ---
 output: 
-  latex_document:
+  pdf_document:
     latex_engine: xelatex
     template: "./cv-simple.tex"
-    md_extensions: "-autolink_bare_uris"
+    md_extensions: "-autolink_bare_uris -auto_identifiers"
 
 name: "Jacob A. Long"
 

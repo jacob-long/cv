@@ -12,8 +12,7 @@ but you can see the basic structure, which I wanted for its section headings in 
 There are a number of useful features in his version that I do not use or even removed in this
 because I needed to make it workable as a pandoc template.
 
-Because of some kind of bug in `rmarkdown`, the document won't compile just from `rmarkdown::render()`.
-Instead, I use `Makefile` to just `make`, which generates the `cv.tex` file using `rmarkdown` and
-then I call `latexmk -xelatex -f cv.tex` to compile `cv.tex` and handle the references via Biblatex.
+You can generate the PDF using `rmarkdown::render()` directly or 
+from the command line you can `make` as a shortcut.
 
 
