@@ -189,13 +189,23 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 
 `panelr`: Regression models and utilities for repeated measures and panel data.
 
+```{r echo = FALSE}
+library(jsonlite)
+url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/panelr")
+panelr_cranlogs <- fromJSON(url)[["downloads"]]
+```
+
 \small 
 \vspace{-.05in}
 
-* \faGithub \hspace{.02in} [github.com/jacob-long/panelr](https://github.com/jacob-long/panelr)
+* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=panelr) 
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGithub \hspace{.02in} [jacob-long/panelr](https://github.com/jacob-long/panelr)
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [panelr.jacob-long.com](https://panelr.jacob-long.com)
 * Author: **Jacob A. Long**
+    * `r format(panelr_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
 
 \normalsize
 
@@ -226,6 +236,8 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 
 \normalsize
 
+\newpage 
+
 # Teaching
 
 ## Ohio State University
@@ -235,8 +247,6 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 
 * COMM 3597: Media and Terrorism
     * Autumn 2018
-
-\newpage 
 
 * COMM 3554: Social Implications of Communication Technology
     * Summer 2018, 2019 (taught online)
