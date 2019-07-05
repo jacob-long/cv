@@ -2,6 +2,7 @@
 output: 
   pdf_document:
     latex_engine: xelatex
+    citation_package: "biblatex"
     template: "./cv-simple.tex"
     md_extensions: "-autolink_bare_uris -auto_identifiers"
 
@@ -85,7 +86,7 @@ library(jtools)
 print_refs <- function(file, names = NULL) {
   refs <- ReadBib(file, check = FALSE)
   cat(paste0("\\fullcitebib{", paste(
-      c(names %just% names(refs), names(sort(refs, sorting = "ydnt")) %not% names), 
+      c(names(refs) %just% names, names(sort(refs, sorting = "ydnt")) %not% names), 
       collapse = ", "), "}"
     )
   )
@@ -96,7 +97,7 @@ print_refs("pubbed.bib")
 # Under Review
 
 ```{r results = 'asis'}
-print_refs("review.bib",  c("garrett"))
+print_refs("review.bib",  c("longa", "garrett"))
 ```
 
 
@@ -104,6 +105,7 @@ print_refs("review.bib",  c("garrett"))
 
 ```{r results = 'asis'}
 BibOptions(check.entries = FALSE)
+source("biblatex_hacks.R")
 confs <- ReadBib("conferences.bib")
 for (entry in names(confs)) {
   if (is.null(confs[[entry]]$note)) {
@@ -113,15 +115,31 @@ for (entry in names(confs)) {
     )
     confs[[entry]]$type <- NULL
   }
+  
+  for (i in 1:length(confs[[entry]]$author)) {
+    if ("Jr." %in% confs[[entry]]$author[[i]]$family) {
+      family <- confs[[entry]]$author[[i]]$family
+      family %just% "Jr." <- ", Jr."
+      given <- confs[[entry]]$author[[i]]$given
+      the_person <- person(given = given, family = family)
+    } else {the_person <- confs[[entry]]$author[[i]]}
+    if (exists("auths")) {
+      auths <- c(auths, the_person)
+    } else {
+      auths <- the_person
+    }
+  }
+  confs[[entry]]$author <- auths
+  rm(auths)
 }
-WriteBib(confs, "conferences.bib")
-print_refs("conferences.bib", c("long2019f", "long2019e"))
+write_bib(confs, "conferences.bib")
+print_refs("conferences.bib", c("long2019f", "long2019e", "jeong2019"))
 ```
 
 # Research in Progress
 
 ```{r results = 'asis'}
-print_refs("inprogress.bib")
+print_refs("inprogress.bib", "long")
 ```
 
 # Software
@@ -235,8 +253,6 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 * \faGithub \hspace{.02in} [github.com/jacob-long/song-and-lyric-data-scraper](https://github.com/jacob-long/song-and-lyric-data-scraper) 
 
 \normalsize
-
-\newpage 
 
 # Teaching
 
