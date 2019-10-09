@@ -60,10 +60,9 @@ knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
         \smallskip
 
         William P. "Chip" Eveland, Jr. (advisor) 
-        \hspace{.05in} \textbullet \hspace{.05in} Michael D. Slater
-        \newline Gerald M. Kosicki
-        \hspace{.05in} \textbullet \hspace{.05in} Robert M. Bond
-
+        \hspace{.05in} \textbullet \hspace{.05in} Michael D. Slater 
+        \hspace{.05in} \textbullet \hspace{.05in} Gerald M. Kosicki
+      
         \smallskip
 
     * Graduate Interdisciplinary Specialization in Survey Research
@@ -75,8 +74,6 @@ knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
 * B.A. with Honors, Political Science \hfill 2014
 
     * Minors in Film Studies and English
-    * Honors Thesis: "Understanding *The Daily Show with Jon Stewart*:
-        Effects in a New Media Environment"
     * Advisors: Amy E. Jasperson and Rashna Wadia Richards
 
 # Publications
