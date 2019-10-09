@@ -302,6 +302,8 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 
 Chaffee-McLeod Top Student Paper Award, AEJMC CT\&M Division \hfill 2019 \thinspace \thinspace \thinspace
 
+McCombs-Shaw Top Student Paper Award (2nd place), AEJMC PCIG \hfill 2019 \thinspace \thinspace \thinspace
+
 University Fellowship (Ohio State University) \hfill 2014-15 
 
 Mike Cody Award for Excellence in Political Science (Rhodes College) \hfill 2014 \thinspace \thinspace \thinspace
@@ -312,15 +314,25 @@ Pi Sigma Alpha, National Political Science Honor Society \hfill 2013 \thinspace 
 
 Cambridge Scholarship (Rhodes College) \hfill 2010-14 
 
-Robert C. Byrd Honors Scholarship \hfill 2010-11
+Robert C. Byrd Honors Scholarship \hfill 2010-11 \hspace{.04em}
 
 # Professional Experience
 
-## Freelance, WMC-TV 5, \normalfont Memphis, TN
+<!--## Copywriter, AndroidPolice.com \normalfont \hfill 2017-18
+Wrote ad copy for clients who purchased native advertising on Android Police.
+
+## Staff Writer, AndroidPolice.com \normalfont \hfill 2014-16
+Android Police is a technology news website with over 5 million unique visitors per month. -->
+
+## Freelance, WMC-TV 5, \normalfont Memphis, TN \hfill 2011 \thinspace \thinspace \thinspace
 Followed experience as news intern. Participated in editorial meetings, assisted reporters, anchors,
 and producers, and worked assignment desk on weekends. Wrote content for newscasts and web.
 
 # Service
+
+*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division (2019-20)
+
+*Peer Mentor*, Ohio State University School of Communication
 
 ## Conference Reviewing
 
