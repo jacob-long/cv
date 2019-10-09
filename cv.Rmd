@@ -46,7 +46,7 @@ urlcolor: "magenta"
 ---
 
 ```{r setup, echo = FALSE}
-knitr::opts_chunk$set(echo = FALSE, warn = FALSE, message = FALSE, comment = "")
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = "")
 ```
 
 # Education
@@ -95,7 +95,7 @@ print_refs("pubbed.bib")
 # Under Review
 
 ```{r results = 'asis'}
-print_refs("review.bib",  c("longa", "garrett"))
+print_refs("review.bib",  c("longa", "long"))
 ```
 
 
@@ -131,13 +131,13 @@ for (entry in names(confs)) {
   rm(auths)
 }
 write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", c("long2019f", "long2019e", "jeong2019"))
+print_refs("conferences.bib", c("long2019c", "long2019b", "jeong2019"))
 ```
 
 # Research in Progress
 
 ```{r results = 'asis'}
-print_refs("inprogress.bib", "long")
+print_refs("inprogress.bib", c("long", "longa", "jeonga", "jeong"))
 ```
 
 # Software
