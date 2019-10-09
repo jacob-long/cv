@@ -13,7 +13,8 @@ affiliation: "School of Communication \\hspace{.05in} \\textbullet \\hspace{.05i
 contact:
   - text: "long.1377@osu.edu"
     link: "mailto:long.1377@osu.edu"
-    icon: "EnvelopeO"
+    icon: "Envelope"
+    opts: "regular"
     mono: false
   - text: "jacob-long.com"
     link: "https://jacob-long.com"
@@ -167,7 +168,7 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 \small
 \vspace{-.05in}
 
-* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=jtools) 
+* \faRProject \ [CRAN](https://CRAN.R-project.org/package=jtools) 
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGithub \hspace{.02in} [jacob-long/jtools](https://github.com/jacob-long/jtools)
 \hspace{.03in} \textbullet \hspace{.05in} 
@@ -192,7 +193,7 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 \small 
 \vspace{-.05in}
 
-* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=interactions) 
+* \faRProject \ [CRAN](https://CRAN.R-project.org/package=interactions) 
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGithub \hspace{.02in} [jacob-long/interactions](https://github.com/jacob-long/interactions)
 \hspace{.03in} \textbullet \hspace{.05in} 
@@ -216,7 +217,7 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 \small 
 \vspace{-.05in}
 
-* \faiconn{r-project} [CRAN](https://CRAN.R-project.org/package=panelr) 
+* \faRProject \ [CRAN](https://CRAN.R-project.org/package=panelr) 
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGithub \hspace{.02in} [jacob-long/panelr](https://github.com/jacob-long/panelr)
 \hspace{.03in} \textbullet \hspace{.05in} 

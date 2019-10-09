@@ -16,8 +16,8 @@
 %% PREAMBLE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{fontawesome} % Easiest to use fontawesome, from CTAN
-\usepackage{fontawesome5} % newer fontawesome, from https://github.com/JanHendrikDolling/latex-fontawesome5
+\usepackage{fontawesome5} % Easiest to use fontawesome, from CTAN
+% \usepackage{fontawesomenew} % newer fontawesome, from https://github.com/JanHendrikDolling/latex-fontawesome5
 \usepackage{academicons} % academic icons from CTAN
 
 % Dealing with annoying \tightlist command that pandoc inserts
@@ -167,7 +167,7 @@ $endif$
   \par
 $if(contact)$
   $for(contact)$
-    $if(contact.icon)$\fa$contact.icon$ \, $endif$ $if(contact.acad)$\ai$contact.acad$ \, $endif$
+    $if(contact.icon)$\fa$contact.icon$$if(contact.opts)$[$contact.opts$]$endif$ \, $endif$ $if(contact.acad)$\ai$contact.acad$ \, $endif$
     $if(contact.link)$ 
       \href{$contact.link$}{
         $if(contact.mono)$
