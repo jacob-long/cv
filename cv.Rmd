@@ -312,8 +312,46 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 * Mass Communication Division (2017)
 * Political Communication Division (2017)
 
-<!--# Additional Training
+<!-- # Additional Training -->
 
-Social Network Analysis workshops at the *10th Annual Political Networks Conference*, Columbus, OH, May 2017
+<!-- Social Network Analysis workshops at the *10th Annual Political Networks Conference*, Columbus, OH, May 2017 -->
 
-Structural Equation Modeling Seminar by *Statistical Horizons*, Columbus, OH, August 2016 -->
+<!-- Structural Equation Modeling Seminar by *Statistical Horizons*, Columbus, OH, August 2016  -->
+
+<!-- \pagebreak -->
+
+# References
+
+\begin{multicols}{2}
+
+\textbf{William P. ``Chip'' Eveland, Jr.} \\
+\textit{Professor of Communication} \\
+\textit{Professor of Political Science (by courtesy)} \\
+School of Communication \\
+The Ohio State University \\ 
+3139 Derby Hall \\
+154 North Oval Mall \\
+Columbus, OH 43210 \\
+\href{mailto:eveland.6@osu.edu}{eveland.6@osu.edu}
+
+\textbf{Gerald M. Kosicki} \\
+\textit{Associate Professor} \\
+\textit{Section Head, Journalism Programs} \\
+School of Communication \\
+The Ohio State University \\ 
+3138 Derby Hall \\
+154 North Oval Mall \\
+Columbus, OH 43210 \\
+\href{mailto:kosicki.1@osu.edu}{kosicki.1@osu.edu}
+
+\columnbreak
+
+\textbf{Michael D. Slater} \\
+\textit{Social and Behavioral Sciences \\ Distinguished Professor \\
+Director}, School of Communication \\
+The Ohio State University \\ 
+3022 Derby Hall \\
+154 North Oval Mall \\
+Columbus, OH 43210 \\
+\href{mailto:slater.59@osu.edu}{slater.59@osu.edu}
+\end{multicols}
