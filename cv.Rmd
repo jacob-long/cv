@@ -155,7 +155,15 @@ read_html(prof_url) %>%
   .[stringr::str_detect(html_text(.), "jtools")] %>%
   html_children() %>%
   html_text() %>%
-  .[2] -> jtools_gsch
+  .[2] %>%
+  stringr::str_replace_all("\\*", "") -> jtools_gsch
+
+read_html(prof_url) %>%
+    html_nodes("tr.gsc_a_tr") %>%
+    .[stringr::str_detect(html_text(.), "jtools")] %>%
+    html_nodes("a") %>% 
+    html_attr("href") %>%
+    .[stringr::str_detect(., "scholar\\.google\\.com")] -> jtools_gsch_link
 
 library(jsonlite)
 url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/jtools")
@@ -171,13 +179,27 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [jtools.jacob-long.com](https://jtools.jacob-long.com)
 
-* Author: **Jacob A. Long**
     * `r jtools_gsch` scholarly citations per
-    [Google Scholar](https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9332474636617245381,8245268343852705630) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    [Google Scholar](`r jtools_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(jtools_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
 
 ```{r echo = FALSE}
+read_html(prof_url) %>%
+  html_nodes("tr.gsc_a_tr") %>%
+  .[stringr::str_detect(html_text(.), "interactions")] %>%
+  html_children() %>%
+  html_text() %>%
+  .[2] %>%
+  stringr::str_replace_all("\\*", "") -> ints_gsch
+
+read_html(prof_url) %>%
+    html_nodes("tr.gsc_a_tr") %>%
+    .[stringr::str_detect(html_text(.), "interactions")] %>%
+    html_nodes("a") %>% 
+    html_attr("href") %>%
+    .[stringr::str_detect(., "scholar\\.google\\.com")] -> ints_gsch_link
+
 library(jsonlite)
 url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
 interactions_cranlogs <- fromJSON(url)[["downloads"]]
@@ -195,7 +217,9 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 \faGithub \hspace{.02in} [jacob-long/interactions](https://github.com/jacob-long/interactions)
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [interactions.jacob-long.com](https://interactions.jacob-long.com)
-* Author: **Jacob A. Long**
+
+    * `r ints_gsch` scholarly citations per
+    [Google Scholar](`r ints_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(interactions_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * Highlighted as a [top new package](https://rviews.rstudio.com/2019/03/26/february-2019-top-40-new-cran-packages/)
@@ -219,9 +243,10 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 \faGithub \hspace{.02in} [jacob-long/panelr](https://github.com/jacob-long/panelr)
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [panelr.jacob-long.com](https://panelr.jacob-long.com)
-* Author: **Jacob A. Long**
+
     * `r format(panelr_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+
 
 \normalsize
 
@@ -236,6 +261,11 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 * Authors: **Jacob A. Long**, Richard A. Williams, Paul D. Allison
 
 \normalsize
+
+I am also a contributor to the [`easystats`](https://easystats.github.io/blog/)
+project, which is developing a suite of R packages to facilitate simple and
+accessible statistical analysis.
+
 
 ## Other
 
