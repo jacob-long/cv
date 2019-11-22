@@ -95,7 +95,7 @@ print_refs("pubbed.bib")
 # Under Review
 
 ```{r results = 'asis'}
-print_refs("review.bib",  c("longa", "long"))
+print_refs("review.bib",  c("longa", "eveland", "long"))
 ```
 
 
@@ -333,6 +333,12 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 *Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division (2019-20)
 
 *Peer Mentor*, Ohio State University School of Communication
+
+## Ad Hoc Reviewing
+
+* Journal of Communication (2019)
+
+\pagebreak
 
 ## Conference Reviewing
 
