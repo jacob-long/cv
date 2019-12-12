@@ -131,7 +131,7 @@ for (entry in names(confs)) {
   rm(auths)
 }
 write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", c("long2019c", "long2019b", "jeong2019"))
+print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
 ```
 
 # Research in Progress
