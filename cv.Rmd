@@ -35,6 +35,7 @@ bibs:
   - "conferences.bib"
   - "inprogress.bib"
   - "review.bib"
+  - "press.bib"
 
 namehash: "7ee2eb84ac3fb6ae0cc177587fcaff6a"
 
@@ -132,6 +133,14 @@ for (entry in names(confs)) {
 }
 write_bib(confs, "conferences.bib")
 print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
+```
+
+# Media
+
+```{r results = 'asis'}
+library(RefManageR)
+library(jtools)
+print_refs("press.bib")
 ```
 
 # Research in Progress
@@ -338,8 +347,6 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 * Journal of Communication (2019)
 * Media Psychology (2019)
-
-\pagebreak
 
 ## Conference Reviewing
 
