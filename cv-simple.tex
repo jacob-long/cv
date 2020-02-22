@@ -86,6 +86,62 @@ $if(namehash)$
   {{$namehash$}}
 $endif$
 
+% Remove "retrieved from" with URLs
+\renewbibmacro*{url+urldate}{%
+  \ifthenelse{\iffieldundef{url}\OR\NOT\iffieldundef{doi}}
+    {}
+    {\iffieldundef{urlyear}
+      {}
+      {
+      % \bibstring{retrieved}%
+       \setunit{\addspace}%
+       % \printurldate
+       % \setunit{\urldatecomma}%
+       % \bibstring{from}%
+       \setunit{\addspace}}%
+     \iffieldundef{url}{}{\printfield{url}\renewcommand*{\finentrypunct}{\relax}}}}
+     
+
+% make URL-ified title
+\newbibmacro*{urltitle}{%
+     {\href{\thefield{url}}{{\usebibmacro{title}}}}
+     \setunit{\addspace}%
+     % \ifentrytype{inbook}{}{\usebibmacro{addinfo1}}% additional info in parens
+     % \setunit{\addspace}%
+     % \printfield{urltitle}%
+     % \setunit{\addspace}%
+     % \usebibmacro{addinfo2}}
+     }%
+
+% Redefine the @online bibliography format
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{urltitle}%
+  \setunit{\addspace}\newblock
+  % \usebibmacro{apa:related}%
+  \newunit\newblock
+  \usebibmacro{journal+issuetitle}%
+  \setunit{\bibpagespunct}%
+  \printfield{pages}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  % \usebibmacro{doi+url}%
+  \newblock
+  \usebibmacro{origyear}%
+  \newunit\newblock
+  \printfield{addendum}%
+  \setunit{\addspace}\newblock
+  % \iftoggle{bbx:related}
+  %   {\usebibmacro{related:init}%
+  %    \usebibmacro{related}}
+  %   {}%
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
 % Add annotations from .bib after each entry
 % https://tex.stackexchange.com/a/91381/182063
 \renewbibmacro*{finentry}{%
