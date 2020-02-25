@@ -187,7 +187,7 @@ Scale = 0.95]
 
 \ifnum\TypesetInDraftMode=0
 \newcommand{\HeaderText}{}
-\newcommand{\FooterText}{\hfill\PageKOfN\hfill\Modified\null}
+\newcommand{\FooterText}{\Modified\hfill\PageKOfN}
 \else
 \newcommand{\HeaderText}{}
 \newcommand{\FooterText}{\null\hphantom{\DraftStamp}\hfill%
