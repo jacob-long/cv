@@ -9,7 +9,9 @@ output:
 name: "Jacob A. Long"
 
 title: "Ph.D Candidate"
+# title: "Assistant Professor"
 affiliation: "School of Communication \\hspace{.05in} \\textbullet \\hspace{.05in} Ohio State University"
+# affiliation: "School of Journalism and Mass Communications \\hspace{.05in} \\textbullet \\hspace{.05in} University of South Carolina"
 contact:
   - text: "long.1377@osu.edu"
     link: "mailto:long.1377@osu.edu"
@@ -50,11 +52,22 @@ urlcolor: "magenta"
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = "")
 ```
 
+# Appointments
+
+## University of South Carolina \normalfont Columbia, South Carolina, USA
+
+### School of Journalism and Mass Communications 
+
+\vspace{-.05in}
+
+* Assistant Professor \hfill starting 2020 
+
+    
 # Education
 
 ## The Ohio State University \normalfont Columbus, Ohio, USA
 
-* Ph.D Candidate, Communication \hfill expected 2020
+* Ph.D, Communication \hfill expected 2020
 
     * Committee: 
 
@@ -62,7 +75,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
 
         William P. "Chip" Eveland, Jr. (advisor) 
         \hspace{.05in} \textbullet \hspace{.05in} Michael D. Slater 
-        \hspace{.05in} \textbullet \hspace{.05in} Gerald M. Kosicki
+      
+        Gerald M. Kosicki \hspace{.05in} \textbullet 
+        \hspace{.05in} Christopher R. Browning (Sociology)
       
         \smallskip
 
@@ -91,62 +106,6 @@ print_refs <- function(file, names = NULL) {
   )
 }
 print_refs("pubbed.bib")
-```
-
-# Under Review
-
-```{r results = 'asis'}
-print_refs("review.bib",  c("longa", "eveland", "long"))
-```
-
-
-# Conference Presentations 
-
-```{r results = 'asis'}
-BibOptions(check.entries = FALSE)
-source("biblatex_hacks.R")
-confs <- ReadBib("conferences.bib")
-for (entry in names(confs)) {
-  if (is.null(confs[[entry]]$note)) {
-    confs[[entry]]$note <- paste(
-    ifelse(is.null(confs[[entry]]$type), no = confs[[entry]]$type, yes = "Paper"),
-    "presented at the", confs[[entry]]$eventtitle
-    )
-    confs[[entry]]$type <- NULL
-  }
-  
-  for (i in 1:length(confs[[entry]]$author)) {
-    if ("Jr." %in% confs[[entry]]$author[[i]]$family) {
-      family <- confs[[entry]]$author[[i]]$family
-      family %just% "Jr." <- ", Jr."
-      given <- confs[[entry]]$author[[i]]$given
-      the_person <- person(given = given, family = family)
-    } else {the_person <- confs[[entry]]$author[[i]]}
-    if (exists("auths")) {
-      auths <- c(auths, the_person)
-    } else {
-      auths <- the_person
-    }
-  }
-  confs[[entry]]$author <- auths
-  rm(auths)
-}
-write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
-```
-
-# Media
-
-```{r results = 'asis'}
-library(RefManageR)
-library(jtools)
-print_refs("press.bib")
-```
-
-# Research in Progress
-
-```{r results = 'asis'}
-print_refs("inprogress.bib", c("long", "longa", "jeonga", "jeong"))
 ```
 
 # Software
@@ -275,7 +234,6 @@ I am also a contributor to the [`easystats`](https://easystats.github.io/blog/)
 project, which is developing a suite of R packages to facilitate simple and
 accessible statistical analysis.
 
-
 ## Other
 
 Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019). 
@@ -290,6 +248,63 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 * \faGithub \hspace{.02in} [github.com/jacob-long/song-and-lyric-data-scraper](https://github.com/jacob-long/song-and-lyric-data-scraper) 
 
 \normalsize
+
+# Media
+
+```{r results = 'asis'}
+library(RefManageR)
+library(jtools)
+print_refs("press.bib")
+```
+
+# Conference Presentations 
+
+```{r results = 'asis'}
+BibOptions(check.entries = FALSE)
+source("biblatex_hacks.R")
+confs <- ReadBib("conferences.bib")
+for (entry in names(confs)) {
+  if (is.null(confs[[entry]]$note)) {
+    confs[[entry]]$note <- paste(
+    ifelse(is.null(confs[[entry]]$type), no = confs[[entry]]$type, yes = "Paper"),
+    "presented at the", confs[[entry]]$eventtitle
+    )
+    confs[[entry]]$type <- NULL
+  }
+  
+  for (i in 1:length(confs[[entry]]$author)) {
+    if ("Jr." %in% confs[[entry]]$author[[i]]$family) {
+      family <- confs[[entry]]$author[[i]]$family
+      family %just% "Jr." <- ", Jr."
+      given <- confs[[entry]]$author[[i]]$given
+      the_person <- person(given = given, family = family)
+    } else {the_person <- confs[[entry]]$author[[i]]}
+    if (exists("auths")) {
+      auths <- c(auths, the_person)
+    } else {
+      auths <- the_person
+    }
+  }
+  confs[[entry]]$author <- auths
+  rm(auths)
+}
+write_bib(confs, "conferences.bib")
+print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
+```
+
+<!-- # Research in Progress -->
+
+<!-- ```{r results = 'asis'} -->
+<!-- print_refs("inprogress.bib", c("long", "longa", "jeonga", "jeong")) -->
+<!-- ``` -->
+
+
+# Under Review
+
+```{r results = 'asis'}
+print_refs("review.bib",  c("longa", "eveland", "long"))
+```
+
 
 # Teaching
 
@@ -307,7 +322,7 @@ Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019).
 * COMM 2367: Persuasive Communication
     * Autumn 2015, Spring 2016 (2 sections), Autumn 2016 (2 sections), Spring 2017 (taught online)
 
-# Honors and Awards
+# Honors and Awards 
 
 Chaffee-McLeod Top Student Paper Award, AEJMC CT\&M Division \hfill 2019 \thinspace \thinspace \thinspace
 
@@ -323,19 +338,21 @@ Pi Sigma Alpha, National Political Science Honor Society \hfill 2013 \thinspace 
 
 Cambridge Scholarship (Rhodes College) \hfill 2010-14 
 
-Robert C. Byrd Honors Scholarship \hfill 2010-11 \hspace{.04em}
+Robert C. Byrd Honors Scholarship \hfill 2010-11 
 
 # Professional Experience
 
-<!--## Copywriter, AndroidPolice.com \normalfont \hfill 2017-18
+## Copywriter, AndroidPolice.com \normalfont \hfill 2017-18
 Wrote ad copy for clients who purchased native advertising on Android Police.
 
 ## Staff Writer, AndroidPolice.com \normalfont \hfill 2014-16
-Android Police is a technology news website with over 5 million unique visitors per month. -->
+Android Police is a technology news website with over 5 million unique visitors per month. 
 
 ## Freelance, WMC-TV 5, \normalfont Memphis, TN \hfill 2011 \thinspace \thinspace \thinspace
 Followed experience as news intern. Participated in editorial meetings, assisted reporters, anchors,
 and producers, and worked assignment desk on weekends. Wrote content for newscasts and web.
+
+\newpage
 
 # Service
 
