@@ -164,11 +164,12 @@ Scale = 0.95]
 \newcommand{\UseHeadingFont}{\normalfont}
 \newcommand{\UseHeaderFooterFont}{\UseHeadingFont\fontsize{8.2pt}{9.5pt}\selectfont}
 \newcommand{\UseNoteFont}{\UseHeadingFont\fontsize{8pt}{9.6pt}\selectfont}
-\newcommand{\UseTitleFont}{\UseSecondaryFont\fontsize{28pt}{33.6pt}\selectfont}
+% \newcommand{\UseTitleFont}{\UseSecondaryFont\fontsize{28pt}{33.6pt}\selectfont}
+\newcommand{\UseTitleFont}{\normalfont\fontsize{28pt}{33.6pt}\selectfont}
 \newcommand{\UseSubTitleFont}{\normalfont\fontsize{9.5pt}{10.3pt}\selectfont}
-\newcommand{\UseSectionFont}{\UseSecondaryFont\fontsize{10pt}{12pt}\selectfont\itshape}
+\newcommand{\UseSectionFont}{\UseSecondaryFont\fontsize{10pt}{12pt}\selectfont}
 \newcommand{\UseSubSectionFont}{\UseHeadingFont\fontsize{10pt}{12pt}\selectfont\bfseries}
-\newcommand{\UseSubSubSectionFont}{\UseHeadingFont\fontsize{8.6pt}{10.3pt}\selectfont}
+\newcommand{\UseSubSubSectionFont}{\UseHeadingFont\fontsize{10pt}{12pt}\selectfont}
 \newcommand{\UseDetailFont}{\normalfont\fontsize{8.6pt}{10.3pt}\selectfont}
 
 % Symbols (Unicode).
@@ -273,7 +274,7 @@ Scale = 0.95]
 \renewcommand{\section}[1]
 {\smallskip
 \par\pdfbookmark[2]{#1}{#1}%
-\item[\smash{\parbox[t]{1.2in}{\UseSectionFont\raggedright{#1}}}]% eliminated \MakeUppercase{#1} after \raggedright
+\item[\smash{\parbox[t]{1.15in}{\UseSectionFont\raggedright{#1}}}]% eliminated \MakeUppercase{#1} after \raggedright
 \par
 }
 
