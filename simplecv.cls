@@ -102,13 +102,20 @@ includefoot]{geometry}
 
 % Font: Use "Cabin" as the main typeface (\textnormal{}, \normalfont).
 % Available via Google Fonts
+% \setmainfont
+% [Path=./Fonts/,
+% ItalicFont=Cabin-Italic,
+% BoldFont=Cabin-Bold,
+% BoldItalicFont=Cabin-BoldItalic,
+% Scale = 1.05]
+% {Cabin-Regular.ttf}
 \setmainfont
 [Path=./Fonts/,
-ItalicFont=Cabin-Italic,
-BoldFont=Cabin-Bold,
-BoldItalicFont=Cabin-BoldItalic,
-Scale = 1.05]
-{Cabin-Regular.ttf}
+ItalicFont=IBMPlexSerif-Italic,
+BoldFont=IBMPlexSerif-Bold,
+BoldItalicFont=IBMPlexSerif-BoldItalic,
+Scale = 1.00]
+{IBMPlexSerif-Regular.otf}
 
 % Secondary font: "Raleway".
 % Available via Google Fonts
