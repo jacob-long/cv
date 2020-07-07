@@ -288,7 +288,8 @@ Scale = 0.95]
 
 % Macro: SubSubSection.
 \renewcommand{\subsubsection}[1]
-{\par\pdfbookmark[3]{#1}{#1}%
+{\par%
+% \pdfbookmark[3]{#1}{#1}%
 {\UseSubSubSectionFont\raggedright{#1}}%
 % \par
 }
