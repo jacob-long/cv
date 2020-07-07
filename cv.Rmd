@@ -335,19 +335,25 @@ print_refs("review.bib",  c("longa", "eveland", "long"))
 
 # Teaching
 
+## University of South Carolina
+
+* JOUR 400: Digital Media and Big Data
+    * AU20
+
 ## Ohio State University
 
 * COMM 4820: Public Opinion and Communication
-    * Summer 2016
+    * SU16
 
 * COMM 3597: Media and Terrorism
-    * Autumn 2018
+    * AU18
 
 * COMM 3554: Social Implications of Communication Technology
-    * Summer 2018, 2019 (taught online)
+    * Online: SU18, SU19
 
 * COMM 2367: Persuasive Communication
-    * Autumn 2015, Spring 2016 (2 sections), Autumn 2016 (2 sections), Spring 2017 (taught online)
+    * AU15, SP16, AU16 
+    * Online: SP17, SU20
 
 # Honors and Awards 
 
