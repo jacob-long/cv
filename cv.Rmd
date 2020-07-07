@@ -211,6 +211,9 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 
     * `r ints_gsch` scholarly citations per
     [Google Scholar](`r ints_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    * Reviewed favorably by 
+    [Lin (2020)](https://doi.org/10.1080/10705511.2020.1732826) in the journal
+    *Structural Equation Modeling*.
     * `r format(interactions_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * Highlighted as a [top new package](https://rviews.rstudio.com/2019/03/26/february-2019-top-40-new-cran-packages/)
