@@ -112,7 +112,7 @@ print_refs("pubbed.bib")
 
 ## R Packages
 
-`jtools`: Analysis and presentation of social scientific data. 
+### `jtools`: Analysis and presentation of social scientific data. 
 
 ```{r echo = FALSE}
 library(rvest)
@@ -175,7 +175,7 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 
 \normalsize 
 
-`interactions`: Comprehensive, user-friendly toolkit for probing interactions.
+### `interactions`: Comprehensive, user-friendly toolkit for probing interactions.
 
 \small 
 \vspace{-.05in}
@@ -195,7 +195,7 @@ interactions_cranlogs <- fromJSON(url)[["downloads"]]
 
 \normalsize
 
-`panelr`: Regression models and utilities for repeated measures and panel data.
+### `panelr`: Regression models and utilities for repeated measures and panel data.
 
 ```{r echo = FALSE}
 library(jsonlite)
@@ -218,7 +218,8 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 
 \normalsize
 
-`dpm`: Dynamic panel models fit with maximum likelihood. 
+### `dpm`: Dynamic panel models fit with maximum likelihood. 
+
 \small 
 \vspace{-.05in}
 
