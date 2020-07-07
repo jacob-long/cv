@@ -133,6 +133,27 @@ read_html(prof_url) %>%
     html_attr("href") %>%
     .[stringr::str_detect(., "scholar\\.google\\.com")] -> jtools_gsch_link
 
+read_html(prof_url) %>%
+  html_nodes("tr.gsc_a_tr") %>%
+  .[stringr::str_detect(html_text(.), "interactions")] %>%
+  html_children() %>%
+  html_text() %>%
+  .[2] %>%
+  stringr::str_replace_all("\\*", "") -> ints_gsch
+
+read_html(prof_url) %>%
+    html_nodes("tr.gsc_a_tr") %>%
+    .[stringr::str_detect(html_text(.), "interactions")] %>%
+    html_nodes("a") %>% 
+    html_attr("href") %>%
+    .[stringr::str_detect(., "scholar\\.google\\.com")] -> ints_gsch_link
+
+jtools_gsch <- as.numeric(jtools_gsch) - as.numeric(ints_gsch)
+
+library(jsonlite)
+url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
+interactions_cranlogs <- fromJSON(url)[["downloads"]]
+
 library(jsonlite)
 url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/jtools")
 jtools_cranlogs <- fromJSON(url)[["downloads"]]
@@ -153,24 +174,26 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
 
 ```{r echo = FALSE}
-read_html(prof_url) %>%
-  html_nodes("tr.gsc_a_tr") %>%
-  .[stringr::str_detect(html_text(.), "interactions")] %>%
-  html_children() %>%
-  html_text() %>%
-  .[2] %>%
-  stringr::str_replace_all("\\*", "") -> ints_gsch
-
-read_html(prof_url) %>%
-    html_nodes("tr.gsc_a_tr") %>%
-    .[stringr::str_detect(html_text(.), "interactions")] %>%
-    html_nodes("a") %>% 
-    html_attr("href") %>%
-    .[stringr::str_detect(., "scholar\\.google\\.com")] -> ints_gsch_link
-
-library(jsonlite)
-url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
-interactions_cranlogs <- fromJSON(url)[["downloads"]]
+## Until Scholar distinguishes these correctly, need to process this 
+## earlier in the document
+# read_html(prof_url) %>%
+#   html_nodes("tr.gsc_a_tr") %>%
+#   .[stringr::str_detect(html_text(.), "interactions")] %>%
+#   html_children() %>%
+#   html_text() %>%
+#   .[2] %>%
+#   stringr::str_replace_all("\\*", "") -> ints_gsch
+# 
+# read_html(prof_url) %>%
+#     html_nodes("tr.gsc_a_tr") %>%
+#     .[stringr::str_detect(html_text(.), "interactions")] %>%
+#     html_nodes("a") %>% 
+#     html_attr("href") %>%
+#     .[stringr::str_detect(., "scholar\\.google\\.com")] -> ints_gsch_link
+# 
+# library(jsonlite)
+# url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
+# interactions_cranlogs <- fromJSON(url)[["downloads"]]
 ```
 
 \normalsize 
