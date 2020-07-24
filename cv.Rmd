@@ -8,13 +8,11 @@ output:
 
 name: "Jacob A. Long"
 
-title: "Ph.D Candidate"
-# title: "Assistant Professor"
-affiliation: "School of Communication \\hspace{.05in} \\textbullet \\hspace{.05in} Ohio State University"
-# affiliation: "School of Journalism and Mass Communications \\hspace{.05in} \\textbullet \\hspace{.05in} University of South Carolina"
+title: "Assistant Professor"
+affiliation: "School of Journalism and Mass Communications \\hspace{.05in} \\textbullet \\hspace{.05in} University of South Carolina"
 contact:
-  - text: "long.1377@osu.edu"
-    link: "mailto:long.1377@osu.edu"
+  - text: "jacob.long@sc.edu"
+    link: "mailto:jacob.long@sc.edu"
     icon: "Envelope"
     opts: "regular"
     mono: false
@@ -60,14 +58,20 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
 
 \vspace{-.05in}
 
-* Assistant Professor \hfill starting 2020 
+* Assistant Professor \hfill 2020--
 
     
 # Education
 
 ## The Ohio State University \normalfont Columbus, Ohio, USA
 
-* Ph.D, Communication \hfill expected 2020
+* PhD, Communication \hfill 2020
+
+    * Dissertation: 
+    
+        \smallskip
+    
+        ``Time Dynamics and Stability of Political Identity and Political Communication''
 
     * Committee: 
 
@@ -83,11 +87,11 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
 
     * Graduate Interdisciplinary Specialization in Survey Research
 
-* M.A., Communication \hfill 2019
+* MA, Communication \hfill 2019
 
 ## Rhodes College \normalfont Memphis, Tennessee, USA
 
-* B.A. with Honors, Political Science \hfill 2014
+* BA with Honors, Political Science \hfill 2014
 
     * Minors in Film Studies and English
     * Advisors: Amy E. Jasperson and Rashna Wadia Richards
@@ -195,6 +199,8 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 # url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
 # interactions_cranlogs <- fromJSON(url)[["downloads"]]
 ```
+
+\newpage
 
 \normalsize 
 
@@ -354,6 +360,16 @@ print_refs("review.bib",  c("longa", "eveland", "long"))
 * COMM 2367: Persuasive Communication
     * AU15, SP16, AU16 
     * Online: SP17, SU20
+    
+# Grants
+
+SJMC Course Development Grant ($2000), University of South Carolina \hfill 2020
+
+Omnibus Survey for the School of Communication, Ohio State University \hfill 2016
+
+
+
+\phantom{.5in} with Michael Slater, Simon Lavis, and Min Seon Jeong
 
 # Honors and Awards 
 
@@ -385,17 +401,18 @@ Android Police is a technology news website with over 5 million unique visitors 
 Followed experience as news intern. Participated in editorial meetings, assisted reporters, anchors,
 and producers, and worked assignment desk on weekends. Wrote content for newscasts and web.
 
-\newpage
+<!-- \newpage -->
 
 # Service
 
-*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division (2019-20)
+*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
 
-*Peer Mentor*, Ohio State University School of Communication
+*Peer Mentor*, Ohio State University School of Communication \hfill 2019-20
 
-## Ad Hoc Reviewing
+## Journal Reviewing
 
 * International Journal of Communication (2020)
+* International Journal of Press/Politics (2020)
 * Journal of Communication (2019)
 * Media Psychology (2019, 2020)
 
@@ -424,38 +441,38 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 <!-- \pagebreak -->
 
-# References
+<!-- # References -->
 
-\begin{multicols}{2}
+<!-- \begin{multicols}{2} -->
 
-\textbf{William P. ``Chip'' Eveland, Jr.} \\
-\textit{Professor of Communication} \\
-\textit{Professor of Political Science (by courtesy)} \\
-School of Communication \\
-The Ohio State University \\ 
-3139 Derby Hall \\
-154 North Oval Mall \\
-Columbus, OH 43210 \\
-\href{mailto:eveland.6@osu.edu}{eveland.6@osu.edu}
+<!-- \textbf{William P. ``Chip'' Eveland, Jr.} \\ -->
+<!-- \textit{Professor of Communication} \\ -->
+<!-- \textit{Professor of Political Science (by courtesy)} \\ -->
+<!-- School of Communication \\ -->
+<!-- The Ohio State University \\  -->
+<!-- 3139 Derby Hall \\ -->
+<!-- 154 North Oval Mall \\ -->
+<!-- Columbus, OH 43210 \\ -->
+<!-- \href{mailto:eveland.6@osu.edu}{eveland.6@osu.edu} -->
 
-\textbf{Gerald M. Kosicki} \\
-\textit{Associate Professor} \\
-\textit{Section Head, Journalism Programs} \\
-School of Communication \\
-The Ohio State University \\ 
-3138 Derby Hall \\
-154 North Oval Mall \\
-Columbus, OH 43210 \\
-\href{mailto:kosicki.1@osu.edu}{kosicki.1@osu.edu}
+<!-- \textbf{Gerald M. Kosicki} \\ -->
+<!-- \textit{Associate Professor} \\ -->
+<!-- \textit{Section Head, Journalism Programs} \\ -->
+<!-- School of Communication \\ -->
+<!-- The Ohio State University \\  -->
+<!-- 3138 Derby Hall \\ -->
+<!-- 154 North Oval Mall \\ -->
+<!-- Columbus, OH 43210 \\ -->
+<!-- \href{mailto:kosicki.1@osu.edu}{kosicki.1@osu.edu} -->
 
-\columnbreak
+<!-- \columnbreak -->
 
-\textbf{Michael D. Slater} \\
-\textit{Social and Behavioral Sciences \\ Distinguished Professor \\
-Director}, School of Communication \\
-The Ohio State University \\ 
-3022 Derby Hall \\
-154 North Oval Mall \\
-Columbus, OH 43210 \\
-\href{mailto:slater.59@osu.edu}{slater.59@osu.edu}
-\end{multicols}
+<!-- \textbf{Michael D. Slater} \\ -->
+<!-- \textit{Social and Behavioral Sciences \\ Distinguished Professor \\ -->
+<!-- Director}, School of Communication \\ -->
+<!-- The Ohio State University \\  -->
+<!-- 3022 Derby Hall \\ -->
+<!-- 154 North Oval Mall \\ -->
+<!-- Columbus, OH 43210 \\ -->
+<!-- \href{mailto:slater.59@osu.edu}{slater.59@osu.edu} -->
+<!-- \end{multicols} -->
