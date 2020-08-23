@@ -343,10 +343,19 @@ print_refs("review.bib",  c("longa", "eveland", "long"))
 
 ## University of South Carolina
 
+### Graduate 
+
+* JOUR 717: Content Analysis
+    * SP21
+
+### Undergraduate
+
 * JOUR 400: Digital Media and Big Data
-    * AU20
+    * AU20, SP21
 
 ## Ohio State University
+
+### Undergraduate
 
 * COMM 4820: Public Opinion and Communication
     * SU16
