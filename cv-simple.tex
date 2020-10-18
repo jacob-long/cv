@@ -225,18 +225,16 @@ $endif$
   \par
 $if(contact)$
   $for(contact)$
-    $if(contact.icon)$\fa$contact.icon$$if(contact.opts)$[$contact.opts$]$endif$ \, $endif$ $if(contact.acad)$\ai$contact.acad$ \, $endif$
-    $if(contact.link)$ 
-      \href{$contact.link$}{
+    $if(contact.icon)$\fa$contact.icon$$if(contact.opts)$[$contact.opts$]$endif$ \, $endif$ $if(contact.acad)$\ai$contact.acad$ \, $endif$ 
+    $if(contact.link)$ \href{$contact.link$}{
         $if(contact.mono)$
           \hspace{-2pt}\texttt{$contact.text$}
         $else$
           $contact.text$
-        $endif$}
+        $endif$} \nolinebreak
     $else$
       $contact.text$
-    $endif$
-  $sep$ \enspace $endfor$
+    $endif$ $sep$ \enspace $endfor$
 $endif$
 \end{SubTitle}
 
