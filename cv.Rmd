@@ -71,7 +71,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
     
         \smallskip
     
-        ``Time Dynamics and Stability of Political Identity and Political Communication''
+        "Time Dynamics and Stability of Political Identity and Political Communication"
 
     * Committee: 
 
@@ -176,6 +176,7 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
     [Google Scholar](`r jtools_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(jtools_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    * Featured in [R for Political Data Science: A Practical Guide](https://www.routledge.com/R-for-Political-Data-Science-A-Practical-Guide/Urdinez-Cruz/p/book/9780367818890).
 
 ```{r echo = FALSE}
 ## Until Scholar distinguishes these correctly, need to process this 
@@ -290,6 +291,8 @@ library(jtools)
 print_refs("press.bib")
 ```
 
+Expert quotes: [Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/)
+
 # Conference Presentations 
 
 ```{r results = 'asis'}
@@ -297,6 +300,10 @@ BibOptions(check.entries = FALSE)
 source("biblatex_hacks.R")
 confs <- ReadBib("conferences.bib")
 for (entry in names(confs)) {
+  # if (!is.null(confs[[entry]]$note)) {
+  #   confs[[entry]]$annotation <- confs[[entry]]$note
+  #   confs[[entry]]$note <- NULL
+  # }
   if (is.null(confs[[entry]]$note)) {
     confs[[entry]]$note <- paste(
     ifelse(is.null(confs[[entry]]$type), no = confs[[entry]]$type, yes = "Paper"),
@@ -332,11 +339,11 @@ print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
 <!-- ``` -->
 
 
-# Under Review
+<!-- # Under Review -->
 
-```{r results = 'asis'}
-print_refs("review.bib",  c("longa", "eveland", "long"))
-```
+<!-- ```{r results = 'asis'} -->
+<!-- print_refs("review.bib",  c("longa", "eveland", "long")) -->
+<!-- ``` -->
 
 
 # Teaching
@@ -345,12 +352,12 @@ print_refs("review.bib",  c("longa", "eveland", "long"))
 
 ### Graduate 
 
-* JOUR 717: Content Analysis
+* JOUR 717: Methods in Content Analysis Research
     * SP21
 
 ### Undergraduate
 
-* JOUR 400: Digital Media and Big Data
+* JOUR 400: Digital Media and Big Data Analysis
     * AU20, SP21
 
 ## Ohio State University
@@ -372,9 +379,9 @@ print_refs("review.bib",  c("longa", "eveland", "long"))
     
 # Grants
 
-SJMC Course Development Grant ($2000), University of South Carolina \hfill 2020
+SJMC Course Development Grant ($2000), University of South Carolina \hfill 2020 \thinspace
 
-Omnibus Survey for the School of Communication, Ohio State University \hfill 2016
+Omnibus Survey for the School of Communication, Ohio State University \hfill 2016 \thinspace
 
 
 
@@ -414,15 +421,50 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 # Service
 
+## To Discipline
+
 *Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
 
-*Peer Mentor*, Ohio State University School of Communication \hfill 2019-20
+## To Institution
+
+*University of South Carolina, School of Journalism and Mass Communications*
+
+Policies & Procedures Committee \hfill 2020–
+
+\medskip
+
+*Ohio State University, School of Communication*
+
+Peer Mentor \hfill 2019-20
 
 ## Journal Reviewing
+
+```{r}
+# Use Publons API to keep track of my reviews
+library(httr)
+library(jsonlite)
+pub_api <- GET(
+  "https://publons.com/api/v2/academic/AAB-9838-2019", 
+  add_headers(Authorization = "Token ccce5e0b2a2c88f67beb5aac0f0ed93cd93eeebb"),
+  accept_json()
+)
+
+pub_api %>% 
+  .[["content"]] %>%
+  rawToChar() %>%
+  fromJSON() %>%
+  .[["reviews"]] %>%
+  .[["pre"]] %>%
+  .[["count"]] -> num_reviews
+```
+
+
+`r num_reviews` peer reviews verified by [Publons](https://publons.com/researcher/3167701/jacob-a-long/) since 2019.
 
 * International Journal of Communication (2020)
 * International Journal of Press/Politics (2020)
 * Journal of Communication (2019)
+* Journal of Computer-Mediated Communication (2020)
 * Media Psychology (2019, 2020)
 
 ## Conference Reviewing
