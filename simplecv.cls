@@ -109,6 +109,13 @@ includefoot]{geometry}
 % BoldItalicFont=Cabin-BoldItalic,
 % Scale = 1.05]
 % {Cabin-Regular.ttf}
+% \setmainfont
+% [Path=./Fonts/,
+% ItalicFont=Aleo-Italic,
+% BoldFont=Aleo-Bold,
+% BoldItalicFont=Aleo-BoldItalic,
+% Scale = 1.00]
+% {Aleo-Regular.otf}
 \setmainfont
 [Path=./Fonts/,
 ItalicFont=IBMPlexSerif-Italic,
@@ -116,6 +123,13 @@ BoldFont=IBMPlexSerif-Bold,
 BoldItalicFont=IBMPlexSerif-BoldItalic,
 Scale = 1.00]
 {IBMPlexSerif-Regular.otf}
+% \setmainfont
+% [Path=./Fonts/,
+% ItalicFont=IBMPlexSans-Italic,
+% BoldFont=IBMPlexSans-Bold,
+% BoldItalicFont=IBMPlexSans-BoldItalic,
+% Scale = 1.00, Numbers={Monospaced,Lining}]
+% {IBMPlexSans-Regular.otf}
 
 % Secondary font: "Raleway".
 % Available via Google Fonts
@@ -127,6 +141,24 @@ BoldFont=Raleway-Bold,
 BoldItalicFont=Raleway-BoldItalic]
 {Raleway-Regular.ttf}
 }
+% \newcommand{\UseSecondaryFont}{
+% \fontspec
+% [Path=./Fonts/,
+% ItalicFont=IBMPlexSerif-Italic,
+% BoldFont=IBMPlexSerif-Bold,
+% BoldItalicFont=IBMPlexSerif-BoldItalic,
+% Scale = 1]
+% {IBMPlexSerif-Regular.otf}
+% }
+% \newcommand{\UseSecondaryFont}{
+% \fontspec
+% [Path=./Fonts/,
+% ItalicFont=Aleo-Italic,
+% BoldFont=Aleo-Bold,
+% BoldItalicFont=Aleo-BoldItalic,
+% Scale = 1.00]
+% {Aleo-Regular.otf}
+% }
 
 \newcommand{\fallbackUnicode}{
 \fontspec{Arial}

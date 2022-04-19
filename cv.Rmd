@@ -28,8 +28,11 @@ contact:
     link: "https://orcid.org/0000-0002-1582-6214"
     acad: "Orcid"
     mono: true
-# twitter: jacobandrewlong
-
+  # - text: "jacobandrewlong"
+  #   link: "https://twitter.com/jacobandrewlong"
+  #   icon: "Twitter"
+  #   mono: false
+    
 bibs:
   - "pubbed.bib"
   - "conferences.bib"
@@ -60,7 +63,6 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
 
 * Assistant Professor \hfill 2020--
 
-    
 # Education
 
 ## The Ohio State University \normalfont Columbus, Ohio, USA
@@ -71,7 +73,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
     
         \smallskip
     
-        "Time Dynamics and Stability of Political Identity and Political Communication"
+        ["Time Dynamics and Stability of Political Identity and Political Communication"](https://etd.ohiolink.edu/apexprod/rws_olink/r/1501/10?p10_etd_subid=186676&clear=10)
 
     * Committee: 
 
@@ -109,7 +111,7 @@ print_refs <- function(file, names = NULL) {
     )
   )
 }
-print_refs("pubbed.bib")
+print_refs("pubbed_no_ann.bib")
 ```
 
 # Software
@@ -122,7 +124,9 @@ print_refs("pubbed.bib")
 library(rvest)
 library(magrittr)
 prof_url <- "https://scholar.google.com/citations?hl=en&user=fi-oVkIAAAAJ&view_op=list_works&citft=1&citft=2&email_for_op=jlongrc%40gmail.com&gmla=AJsN-F6U0W7Pb2H2sGdtSobMNTJR-HLu-OQ8kKCZeXg1EycF_GfWYLB54v7H5SlMcGBqKUjGlMnSkJlG3j0fM8wMhBJz2i4iM5kAVUf2PeoGyCMgeTkkLwA&gmla=AJsN-F7fklbe6gqvPjDweKtwwyvicMTZxtpVLPRUTNteYwXL1tMV7xHD81vwhCXcs_suOKGI83V7y8c_R5a_GxNBIkkarl0D6W7yKCwU2m9JqJ0Mzupk46M&sciund=729968478779288"
-read_html(prof_url) %>%
+
+gsch_page <- read_html(prof_url)
+gsch_page %>%
   html_nodes("tr.gsc_a_tr") %>%
   .[stringr::str_detect(html_text(.), "jtools")] %>%
   html_children() %>%
@@ -130,14 +134,14 @@ read_html(prof_url) %>%
   .[2] %>%
   stringr::str_replace_all("\\*", "") -> jtools_gsch
 
-read_html(prof_url) %>%
+gsch_page %>%
     html_nodes("tr.gsc_a_tr") %>%
     .[stringr::str_detect(html_text(.), "jtools")] %>%
     html_nodes("a") %>% 
     html_attr("href") %>%
     .[stringr::str_detect(., "scholar\\.google\\.com")] -> jtools_gsch_link
 
-read_html(prof_url) %>%
+gsch_page %>%
   html_nodes("tr.gsc_a_tr") %>%
   .[stringr::str_detect(html_text(.), "interactions")] %>%
   html_children() %>%
@@ -145,14 +149,14 @@ read_html(prof_url) %>%
   .[2] %>%
   stringr::str_replace_all("\\*", "") -> ints_gsch
 
-read_html(prof_url) %>%
+gsch_page %>%
     html_nodes("tr.gsc_a_tr") %>%
     .[stringr::str_detect(html_text(.), "interactions")] %>%
     html_nodes("a") %>% 
     html_attr("href") %>%
     .[stringr::str_detect(., "scholar\\.google\\.com")] -> ints_gsch_link
 
-jtools_gsch <- as.numeric(jtools_gsch) - as.numeric(ints_gsch)
+# jtools_gsch <- as.numeric(jtools_gsch) - as.numeric(ints_gsch)
 
 library(jsonlite)
 url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/interactions")
@@ -201,8 +205,6 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 # interactions_cranlogs <- fromJSON(url)[["downloads"]]
 ```
 
-\newpage
-
 \normalsize 
 
 ### `interactions`: Comprehensive, user-friendly toolkit for probing interactions.
@@ -231,6 +233,21 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
 ### `panelr`: Regression models and utilities for repeated measures and panel data.
 
 ```{r echo = FALSE}
+gsch_page %>%
+  html_nodes("tr.gsc_a_tr") %>%
+  .[stringr::str_detect(html_text(.), "panelr")] %>%
+  html_children() %>%
+  html_text() %>%
+  .[2] %>%
+  stringr::str_replace_all("\\*", "") -> panelr_gsch
+
+gsch_page %>%
+    html_nodes("tr.gsc_a_tr") %>%
+    .[stringr::str_detect(html_text(.), "panelr")] %>%
+    html_nodes("a") %>% 
+    html_attr("href") %>%
+    .[stringr::str_detect(., "scholar\\.google\\.com")] -> panelr_gsch_link
+
 library(jsonlite)
 url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/panelr")
 panelr_cranlogs <- fromJSON(url)[["downloads"]]
@@ -245,6 +262,8 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [panelr.jacob-long.com](https://panelr.jacob-long.com)
 
+    * `r panelr_gsch` scholarly citations per
+    [Google Scholar](`r panelr_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(panelr_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
 
@@ -270,7 +289,7 @@ accessible statistical analysis.
 
 ## Other
 
-Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2019). 
+Song and Lyric Data Scraper [Ruby app]. Accompanies Long \& Eveland (2021). 
 
 \vspace{-.05in}
 
@@ -291,7 +310,7 @@ library(jtools)
 print_refs("press.bib")
 ```
 
-Expert quotes: [Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/)
+Expert quotes: [National Interest](https://nationalinterest.org/feature/why-biden-harris-ticket-could-be-unstoppable-2024-179416), [Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/)
 
 # Conference Presentations 
 
@@ -329,7 +348,7 @@ for (entry in names(confs)) {
   rm(auths)
 }
 write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
+print_refs("conferences.bib", "long22")
 ```
 
 <!-- # Research in Progress -->
@@ -354,11 +373,19 @@ print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
 
 * JOUR 717: Methods in Content Analysis Research
     * SP21
+* JOUR 790: Political Communication
+    * AU21
+* JOUR 801: Communication Research Design
+    * SP22
 
 ### Undergraduate
 
+* JOUR 332: Mass Communications Research
+    * SP22
 * JOUR 400: Digital Media and Big Data Analysis
-    * AU20, SP21
+    * AU20, SP21, AU21, AU22 (scheduled)
+* JOUR 542: Public Opinion and Persuasion
+    * AU22 (scheduled)
 
 ## Ohio State University
 
@@ -378,6 +405,11 @@ print_refs("conferences.bib", c("long2019f",  "jeong2019", "long2019e"))
     * Online: SP17, SU20
     
 # Grants
+
+CIC Research Grant ($10,000), University of South Carolina \hfill 2021 \thinspace
+
+\phantom{.5in} with Sei-Hill Kim, Yingying Chen, and Jungmi Jun
+
 
 SJMC Course Development Grant ($2000), University of South Carolina \hfill 2020 \thinspace
 
@@ -421,15 +453,30 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 # Service
 
-## To Discipline
+## Doctoral Committees
 
-*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
+* Shelbretta Ball \hfill 2022-
+* Ali Zain \hfill 2022-
+
+## Masters Committees
+
+* Xin Tao \hfill 2021-22
 
 ## To Institution
 
 *University of South Carolina, School of Journalism and Mass Communications*
 
-Policies & Procedures Committee \hfill 2020–
+Chair, Technology Committee \hfill 2021-
+
+Policies & Procedures Committee \hfill 2020-
+
+SONA administrator \hfill 2021-
+
+Faculty Search Committee \hfill 2020-21
+
+*University of South Carolina, College of Information and Communications*
+
+Faculty Advisory Committee \hfill 2022-
 
 \medskip
 
@@ -449,35 +496,50 @@ pub_api <- GET(
   accept_json()
 )
 
-pub_api %>% 
-  .[["content"]] %>%
-  rawToChar() %>%
-  fromJSON() %>%
-  .[["reviews"]] %>%
-  .[["pre"]] %>%
-  .[["count"]] -> num_reviews
+if (!grepl("too many", pub_api)) {
+  pub_api %>% 
+    .[["content"]] %>%
+    rawToChar() %>%
+    fromJSON() %>%
+    .[["reviews"]] %>%
+    .[["pre"]] %>%
+    .[["count"]] -> num_reviews
+} else {
+  num_reviews <- 16
+}
 ```
-
 
 `r num_reviews` peer reviews verified by [Publons](https://publons.com/researcher/3167701/jacob-a-long/) since 2019.
 
-* International Journal of Communication (2020)
+* Communication Research (2021)
+* International Journal of Communication (2020 x2, 2021 x3)
 * International Journal of Press/Politics (2020)
+* Journal of Broadcasting & Electronic Media (2021)
 * Journal of Communication (2019)
-* Journal of Computer-Mediated Communication (2020)
-* Media Psychology (2019, 2020)
+* Journal of Communication Technology (2021 x2)
+* Journal of Computer-Mediated Communication (2020, 2021)
+* Journalism and Mass Communication Quarterly (2021)
+* Mass Communication and Society (2020, 2021 x2)
+* Media Psychology (2019, 2020, 2021)
+* Southern Journal of Communication (2021)
+
+## To Discipline
+
+*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
+
 
 ## Conference Reviewing
 
 *International Communication Association:*
 
 * Mass Communication Division (2018)
-* Political Communication Division (2018, 2019)
-* Computational Methods Division (2019)
+* Political Communication Division (2018, 2019, 2021, 2022)
+* Computational Methods Division (2019, 2021, 2022)
 
 *Association for Education in Journalism and Mass Communication*:
 
 * Political Communication Division (2019, 2020)
+* Midwinter Conference (2021)
 
 *National Communication Association:*
 
