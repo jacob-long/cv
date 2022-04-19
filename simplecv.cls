@@ -313,7 +313,7 @@ Scale = 0.95]
 % Macro: SubSection.
 \renewcommand{\subsection}[1]
 {\smallskip
-\par\pdfbookmark[3]{#1}{#1}%
+\par\pdfbookmark[3]{#1}{}%
 {\UseSubSectionFont\raggedright{#1}}% eliminated \MakeUppercase{#1} after \raggedright
 \par
 }
