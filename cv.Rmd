@@ -219,7 +219,7 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
     * `r jtools_gsch` scholarly citations per
     [Google Scholar](`r jtools_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(jtools_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
-    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) since 2/27/2017 initial release
     * Featured in [R for Political Data Science: A Practical Guide](https://www.routledge.com/R-for-Political-Data-Science-A-Practical-Guide/Urdinez-Cruz/p/book/9780367818890).
 
 ```{r echo = FALSE}
@@ -264,7 +264,7 @@ jtools_cranlogs <- fromJSON(url)[["downloads"]]
     [Lin (2020)](https://doi.org/10.1080/10705511.2020.1732826) in the journal
     *Structural Equation Modeling*.
     * `r format(interactions_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
-    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) since 2/19/2019 initial release
     * Highlighted as a [top new package](https://rviews.rstudio.com/2019/03/26/february-2019-top-40-new-cran-packages/)
      in February 2019
 
@@ -305,7 +305,7 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
     * `r panelr_gsch` scholarly citations per
     [Google Scholar](`r panelr_gsch_link`) as of `r format(Sys.Date(), "%m/%d/%Y")`
     * `r format(panelr_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
-    [CRAN mirror](https://r-pkg.org/services#cranlogs) as of `r format(Sys.Date(), "%m/%d/%Y")`
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) since 5/16/2019 initial release
 
 
 \normalsize
@@ -446,11 +446,11 @@ print_refs("conferences.bib", c("zain2022", "long2022"))
 * JOUR 717: Methods in Content Analysis Research
     * SP21
 * JOUR 749: Literature of Mass Communication
-    * AU22, AU23
+    * AU22, AU23, AU24
 * JOUR 790: Political Communication
     * AU21
 * JOUR 801: Communication Research Design
-    * SP22, AU23
+    * SP22, AU23, AU24
     * Research conducted collaboratively in this course resulted in the following 
     student-led publication: \newline \newline
 ```{r results = 'asis'}
@@ -615,7 +615,7 @@ if (!grepl("too many", pub_api)) {
     .[["pre"]] %>%
     .[["count"]] -> num_reviews
 } else {
-  num_reviews <- 27
+  num_reviews <- 32
 }
 ```
 
