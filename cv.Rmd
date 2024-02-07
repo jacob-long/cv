@@ -43,6 +43,13 @@ bibs:
   - "student-mentored.bib"
 
 namehash: "7ee2eb84ac3fb6ae0cc177587fcaff6a"
+grad: 
+  - name: "ali"
+    hash: "229eaeb960da910ee359a80f41542622"
+  - name: "colin"
+    hash: "93cfa8db70351056d7dcadfef470121e"
+  - name: "camryngarrett"
+    hash: "b2ac67b64316efed8629ed86270b3a90"
 
 raggedright: true
 
@@ -101,6 +108,10 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
     * Advisors: Amy E. Jasperson and Rashna Wadia Richards
 
 # Journal Articles
+
+\UseDetailFont \textasteriskcentered: Graduate student co-author \fontsize{10pt}{12pt}
+
+\normalfont 
 
 ```{r results = 'asis'}
 library(RefManageR)
@@ -371,6 +382,10 @@ Expert quotes: [National Interest](https://nationalinterest.org/feature/why-bide
 
 # Conference Presentations 
 
+\UseDetailFont \textasteriskcentered: Graduate student co-author \fontsize{10pt}{12pt}
+
+\normalfont 
+
 ```{r results = 'asis'}
 BibOptions(check.entries = FALSE)
 source("biblatex_hacks.R")
@@ -405,7 +420,7 @@ for (entry in names(confs)) {
   rm(auths)
 }
 write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", "long22")
+print_refs("conferences.bib", c("zain2022", "long2022"))
 ```
 
 <!-- # Research in Progress -->

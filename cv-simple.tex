@@ -86,6 +86,62 @@ $if(namehash)$
   {{$namehash$}}
 $endif$
 
+%%%%%%%%%% Italicizing grad student names in bibliography entries %%%%%%%%%%%%%%
+% adapted from 
+% https://tex.stackexchange.com/questions/253388/author-highlighting-with-biblatex-apa
+% This requires a run of biber to see what your name is hashed to 
+% (looks like 7ee2eb84ac3fb6ae0cc177587fcaff6a) and then it is provided
+% in the YAML header in the Rmd or other pandoc input. See the
+% link above for more info.
+% $if(grad)$
+% \usepackage{xpatch}% or use https://tex.stackexchange.com/a/40705
+
+% \newcommand*{\doitalichashes}[1]{%
+%   \iffieldequalstr{hash}{#1}
+%     {\itshape\listbreak}
+%     {}}%
+
+%   \newbibmacro*{name:italic}{%
+%     \forlistloop{\doitalichashes}{\italicnames}%
+%   }
+% % Loop through the grad students 
+% $for(grad)$
+% \newcommand*{\italicnames$grad.name$}{}
+
+% \xpretobibmacro{name:apa:family-given}{\begingroup\usebibmacro{name:italic}}{}{}
+% \xpretobibmacro{name:delim}{\begingroup\normalfont}{}{}
+
+% \xapptobibmacro{name:apa:family-given}{\endgroup}{}{}
+% \xapptobibmacro{name:delim}{\endgroup}{}{}
+
+% \renewcommand*{\italicnames$grad.name$}{}
+% \forcsvlist{\listadd\italicnames}
+%   {{$grad.hash$}}
+% $endfor$
+% $endif$
+
+%%%%%%%%%%%%% Add asterisk next to the names of grad students %%%%%%%%%%%%%%%%%
+%%%%%%%% adapted from  https://tex.stackexchange.com/a/407232/182063 %%%%%%%%%%
+% Need to loop through each student and create a unique command for every one %
+$if(grad)$
+% Loop through the grad students 
+\newbibmacro*{name:ast}[2]{%
+  \def\do##1{\iffieldequalstr{hash}{##1}{\textasteriskcentered\listbreak}{}}%
+  \dolistloop{\astnames}}
+
+\xapptobibmacro{name:apa:family}{\usebibmacro{name:ast}}{}{}
+\xapptobibmacro{name:apa:given-family}{\usebibmacro{name:ast}}{}{}
+\xapptobibmacro{name:apa:family-given}{\usebibmacro{name:ast}}{}{}  
+
+$for(grad)$
+
+\newcommand*{\astnames$grad.name$}{}
+\forcsvlist{\listadd\astnames}
+  {{$grad.hash$}}
+
+$endfor$
+$endif$
+
 % Remove "retrieved from" with URLs
 \renewbibmacro*{url+urldate}{%
   \ifthenelse{\iffieldundef{url}\OR\NOT\iffieldundef{doi}}
