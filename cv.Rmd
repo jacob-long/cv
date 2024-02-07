@@ -39,6 +39,8 @@ bibs:
   - "inprogress.bib"
   - "review.bib"
   - "press.bib"
+  - "chapters.bib"
+  - "student-mentored.bib"
 
 namehash: "7ee2eb84ac3fb6ae0cc177587fcaff6a"
 
@@ -98,7 +100,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = 
     * Minors in Film Studies and English
     * Advisors: Amy E. Jasperson and Rashna Wadia Richards
 
-# Publications
+# Journal Articles
 
 ```{r results = 'asis'}
 library(RefManageR)
@@ -111,7 +113,34 @@ print_refs <- function(file, names = NULL) {
     )
   )
 }
-print_refs("pubbed_no_ann.bib")
+print_refs("pubbed.bib", "long2023")
+```
+
+# Book Chapters
+
+```{r results = 'asis'}
+BibOptions(check.entries = FALSE)
+source("biblatex_hacks.R")
+chaps <- ReadBib("chapters.bib")
+for (entry in names(chaps)) {  
+  for (i in 1:length(chaps[[entry]]$author)) {
+    if ("Jr." %in% chaps[[entry]]$author[[i]]$family) {
+      family <- chaps[[entry]]$author[[i]]$family
+      family %just% "Jr." <- ", Jr."
+      given <- chaps[[entry]]$author[[i]]$given
+      the_person <- person(given = given, family = family)
+    } else {the_person <- chaps[[entry]]$author[[i]]}
+    if (exists("auths")) {
+      auths <- c(auths, the_person)
+    } else {
+      auths <- the_person
+    }
+  }
+  chaps[[entry]]$author <- auths
+  rm(auths)
+}
+write_bib(chaps, "chapters.bib")
+print_refs("chapters.bib")
 ```
 
 # Software
@@ -272,12 +301,38 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
 
 ### `dpm`: Dynamic panel models fit with maximum likelihood. 
 
+```{r echo = FALSE}
+# gsch_page %>%
+#   html_nodes("tr.gsc_a_tr") %>%
+#   .[stringr::str_detect(html_text(.), "panelr")] %>%
+#   html_children() %>%
+#   html_text() %>%
+#   .[2] %>%
+#   stringr::str_replace_all("\\*", "") -> panelr_gsch
+
+# gsch_page %>%
+#     html_nodes("tr.gsc_a_tr") %>%
+#     .[stringr::str_detect(html_text(.), "panelr")] %>%
+#     html_nodes("a") %>% 
+#     html_attr("href") %>%
+#     .[stringr::str_detect(., "scholar\\.google\\.com")] -> panelr_gsch_link
+
+library(jsonlite)
+url <- paste0("https://cranlogs.r-pkg.org/downloads/total/2014-01-01:", Sys.Date(), "/dpm")
+dpm_cranlogs <- fromJSON(url)[["downloads"]]
+```
+
 \small 
 \vspace{-.05in}
 
-* \faGithub \hspace{.02in} [github.com/jacob-long/dpm](https://github.com/jacob-long/dpm)
+* \faRProject \ [CRAN](https://CRAN.R-project.org/package=dpm) 
+\hspace{.03in} \textbullet \hspace{.05in} 
+\faGithub \hspace{.02in} [jacob-long/dpm](https://github.com/jacob-long/dpm)
 \hspace{.03in} \textbullet \hspace{.05in} 
 \faGlobe \hspace{.02in} [dpm.jacob-long.com](https://dpm.jacob-long.com)
+
+    * `r format(dpm_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
+    [CRAN mirror](https://r-pkg.org/services#cranlogs) since 1/16/2024 initial release
 
 * Authors: **Jacob A. Long**, Richard A. Williams, Paul D. Allison
 
@@ -309,6 +364,8 @@ library(RefManageR)
 library(jtools)
 print_refs("press.bib")
 ```
+
+Interview: [WOLO-TV](https://www.abccolumbia.com/2022/10/28/one-on-one-usc-professor-explains-voting-trends-ahead-of-election-day/) (Columbia, SC)
 
 Expert quotes: [National Interest](https://nationalinterest.org/feature/why-biden-harris-ticket-could-be-unstoppable-2024-179416), [Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/)
 
@@ -373,19 +430,41 @@ print_refs("conferences.bib", "long22")
 
 * JOUR 717: Methods in Content Analysis Research
     * SP21
+* JOUR 749: Literature of Mass Communication
+    * AU22, AU23
 * JOUR 790: Political Communication
     * AU21
 * JOUR 801: Communication Research Design
-    * SP22
+    * SP22, AU23
+    * Research conducted collaboratively in this course resulted in the following 
+    student-led publication: \newline \newline
+```{r results = 'asis'}
+library(RefManageR)
+library(jtools)
+print_refs <- function(file, names = NULL) {
+  refs <- ReadBib(file, check = FALSE)
+  cat(paste0("\\fullcitebib{", paste(
+      c(names(refs) %just% names, names(sort(refs, sorting = "ydnt")) %not% names), 
+      collapse = ", "), "}"
+    )
+  )
+}
+print_refs("student-mentored.bib")
+```
 
 ### Undergraduate
 
 * JOUR 332: Mass Communications Research
-    * SP22
+    * SP22, SP24
 * JOUR 400: Digital Media and Big Data Analysis
-    * AU20, SP21, AU21, AU22 (scheduled)
+    * AU20, SP21, AU21
+* JOUR 515: Mass Communications Capstone Portfolio
+    * SP23, SP24
+
+### Undergraduate/Graduate
+
 * JOUR 542: Public Opinion and Persuasion
-    * AU22 (scheduled)
+    * AU22, SP23
 
 ## Ohio State University
 
@@ -455,12 +534,16 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 ## Doctoral Committees
 
-* Shelbretta Ball \hfill 2022-
-* Ali Zain \hfill 2022-
+* Adetutu Wande-Kayode \hfill (ongoing)
+* Shelbretta Ball \hfill 2023
 
 ## Masters Committees
 
-* Xin Tao \hfill 2021-22
+* Xin Tao \hfill 2023
+
+## BARSC/Honor's Thesis Committees
+
+* Tommy Holter \hfill (ongoing)
 
 ## To Institution
 
@@ -470,19 +553,31 @@ Chair, Technology Committee \hfill 2021-
 
 Policies & Procedures Committee \hfill 2020-
 
-SONA administrator \hfill 2021-
+SONA administrator \hfill 2021-22
 
-Faculty Search Committee \hfill 2020-21
+Faculty Search Committee (Data, Media, and Society) \hfill 2020-21
+
+\medskip
 
 *University of South Carolina, College of Information and Communications*
 
 Faculty Advisory Committee \hfill 2022-
+
+Faculty Search Committee (UNESCO Chair) \hfill 2022-23
+
+Faculty Budget Committee \hfill 2023-
 
 \medskip
 
 *Ohio State University, School of Communication*
 
 Peer Mentor \hfill 2019-20
+
+## To Discipline
+
+*Panel Moderator*, BEA On-Site Conference, Columbia, SC \hfill 2023
+
+*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
 
 ## Journal Reviewing
 
@@ -505,28 +600,26 @@ if (!grepl("too many", pub_api)) {
     .[["pre"]] %>%
     .[["count"]] -> num_reviews
 } else {
-  num_reviews <- 16
+  num_reviews <- 27
 }
 ```
 
-`r num_reviews` peer reviews verified by [Publons](https://publons.com/researcher/3167701/jacob-a-long/) since 2019.
+`r num_reviews` peer reviews verified by [Web of Science](https://www.webofscience.com/wos/author/record/AAB-9838-2019) since 2019.
 
-* Communication Research (2021)
-* International Journal of Communication (2020 x2, 2021 x3)
-* International Journal of Press/Politics (2020)
+* Atlantic Journal of Communication (2022 x2)
+* Communication Research (2021, 2022, 2023 x2, 2024)
+* European Journal of Information Systems (2023)
+* International Journal of Communication (2020 x2, 2021 x3, 2023 x2)
+* International Journal of Press/Politics (2020, 2024)
 * Journal of Broadcasting & Electronic Media (2021)
 * Journal of Communication (2019)
-* Journal of Communication Technology (2021 x2)
+* Journal of Communication Technology (2021 x2, 2023)
 * Journal of Computer-Mediated Communication (2020, 2021)
 * Journalism and Mass Communication Quarterly (2021)
-* Mass Communication and Society (2020, 2021 x2)
+* Mass Communication and Society (2020, 2021 x2, 2022 x2, 2023)
 * Media Psychology (2019, 2020, 2021)
+* New Media & Society (2022, 2024)
 * Southern Journal of Communication (2021)
-
-## To Discipline
-
-*Graduate Student Liaison*, AEJMC Comm. Theory & Methodology Division \hfill 2019-20
-
 
 ## Conference Reviewing
 
