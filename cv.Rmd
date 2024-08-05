@@ -50,6 +50,18 @@ grad:
     hash: "93cfa8db70351056d7dcadfef470121e"
   - name: "camryngarrett"
     hash: "b2ac67b64316efed8629ed86270b3a90"
+  - name: "shamira"
+    hash: "3dcb02cae642acfc4f12d42ac1622330"
+  - name: "carrie"
+    hash: "030cb65d380537be6c3b52732e2c0a92"
+  - name: "ertan"
+    hash: "1f2765f46a7f0b0d3bcd9001fef1ee9c"
+  - name: "chinwendu"
+    hash: "a77a020836930bd1663b25f45d1ad826"
+  - name: "abdullah"
+    hash: "085e1c59bc5527d04b71fd4717716084"
+  - name: "yanzhen"
+    hash: "b80d0cc6354e7f9fb11202c6c4ef5e9a"
 
 raggedright: true
 
@@ -307,6 +319,7 @@ panelr_cranlogs <- fromJSON(url)[["downloads"]]
     * `r format(panelr_cranlogs, big.mark = ",", scientific = FALSE)` downloads from RStudio's
     [CRAN mirror](https://r-pkg.org/services#cranlogs) since 5/16/2019 initial release
 
+\pagebreak
 
 \normalsize
 
@@ -378,7 +391,9 @@ print_refs("press.bib")
 
 Interview: [WOLO-TV](https://www.abccolumbia.com/2022/10/28/one-on-one-usc-professor-explains-voting-trends-ahead-of-election-day/) (Columbia, SC)
 
-Expert quotes: [National Interest](https://nationalinterest.org/feature/why-biden-harris-ticket-could-be-unstoppable-2024-179416), [Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/)
+Expert quotes: [National Interest](https://nationalinterest.org/feature/why-biden-harris-ticket-could-be-unstoppable-2024-179416), 
+[Greenville News](https://www.greenvilleonline.com/story/news/2020/09/30/record-absentee-voting-already-confusion-over-mail-ballots-witness-signatures/3571556001/),
+[Lianhe Zaobao](https://www.zaobao.com.sg/news/world/story20240315-3157514)
 
 # Conference Presentations 
 
@@ -420,7 +435,7 @@ for (entry in names(confs)) {
   rm(auths)
 }
 write_bib(confs, "conferences.bib")
-print_refs("conferences.bib", c("zain2022", "long2022"))
+print_refs("conferences.bib")
 ```
 
 <!-- # Research in Progress -->
@@ -446,7 +461,7 @@ print_refs("conferences.bib", c("zain2022", "long2022"))
 * JOUR 717: Methods in Content Analysis Research
     * SP21
 * JOUR 749: Literature of Mass Communication
-    * AU22, AU23, AU24
+    * AU22, AU23
 * JOUR 790: Political Communication
     * AU21
 * JOUR 801: Communication Research Design
@@ -470,7 +485,7 @@ print_refs("student-mentored.bib")
 ### Undergraduate
 
 * JOUR 332: Mass Communications Research
-    * SP22, SP24
+    * SP22, SP24, AU24
 * JOUR 400: Digital Media and Big Data Analysis
     * AU20, SP21, AU21
 * JOUR 515: Mass Communications Capstone Portfolio
@@ -500,15 +515,19 @@ print_refs("student-mentored.bib")
     
 # Grants
 
+CIC Research Grant ($4,000), University of South Carolina \hfill 2024 \thinspace
+
+\phantom{.5in} (PI) with Ertan Ağaoğlu\*, Chinwendu Akalonu\*, Shamira McCray\*,
+Carrie Xiao\*
+
 CIC Research Grant ($10,000), University of South Carolina \hfill 2021 \thinspace
 
-\phantom{.5in} with Sei-Hill Kim, Yingying Chen, and Jungmi Jun
+\phantom{.5in} (co-PI) with Sei-Hill Kim, Yingying Chen, and Jungmi Jun
 
 
 SJMC Course Development Grant ($2000), University of South Carolina \hfill 2020 \thinspace
 
 Omnibus Survey for the School of Communication, Ohio State University \hfill 2016 \thinspace
-
 
 
 \phantom{.5in} with Michael Slater, Simon Lavis, and Min Seon Jeong
@@ -550,6 +569,7 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 ## Doctoral Committees
 
 * Adetutu Wande-Kayode \hfill (ongoing)
+* Carmen Landy \hfill (ongoing)
 * Shelbretta Ball \hfill 2023
 
 ## Masters Committees
@@ -558,7 +578,14 @@ and producers, and worked assignment desk on weekends. Wrote content for newscas
 
 ## BARSC/Honor's Thesis Committees
 
+Director: 
+
+* Alex Blumenthal \hfill (ongoing)
+
+Member:
+
 * Tommy Holter \hfill (ongoing)
+
 
 ## To Institution
 
@@ -622,16 +649,17 @@ if (!grepl("too many", pub_api)) {
 `r num_reviews` peer reviews verified by [Web of Science](https://www.webofscience.com/wos/author/record/AAB-9838-2019) since 2019.
 
 * Atlantic Journal of Communication (2022 x2)
-* Communication Research (2021, 2022, 2023 x2, 2024)
+* Communication Research (2021, 2022, 2023 x2, 2024 x3)
 * European Journal of Information Systems (2023)
 * International Journal of Communication (2020 x2, 2021 x3, 2023 x2)
 * International Journal of Press/Politics (2020, 2024)
+* Journal of Applied Communication Research (2024 x2)
 * Journal of Broadcasting & Electronic Media (2021)
 * Journal of Communication (2019)
 * Journal of Communication Technology (2021 x2, 2023)
 * Journal of Computer-Mediated Communication (2020, 2021)
-* Journalism and Mass Communication Quarterly (2021)
-* Mass Communication and Society (2020, 2021 x2, 2022 x2, 2023)
+* Journalism and Mass Communication Quarterly (2021, 2024)
+* Mass Communication and Society (2020, 2021 x2, 2022 x2, 2023, 2024 x2)
 * Media Psychology (2019, 2020, 2021)
 * New Media & Society (2022, 2024)
 * Southern Journal of Communication (2021)
@@ -646,7 +674,8 @@ if (!grepl("too many", pub_api)) {
 
 *Association for Education in Journalism and Mass Communication*:
 
-* Political Communication Division (2019, 2020)
+* Communication Theory and Methodology Division (2024)
+* Political Communication Division (2019, 2020, 2024)
 * Midwinter Conference (2021)
 
 *National Communication Association:*
